@@ -173,8 +173,8 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     copyButton.addEventListener('click', () => {
-        const wallxString = `const wallx = ${JSON.stringify(wallx)};`;
-        const wallyString = `const wally = ${JSON.stringify(wally)};`;
+        const wallxString = `wallx = ${JSON.stringify(wallx)};`;
+        const wallyString = `wally = ${JSON.stringify(wally)};`;
         const combinedString = `${wallxString}\n\n${wallyString}`;
         navigator.clipboard.writeText(combinedString).then(() => {
             alert('墙壁坐标已复制到剪贴板！');

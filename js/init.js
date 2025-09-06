@@ -15,14 +15,14 @@ dialog_button.addEventListener('click', function(){
 	check_all_interact();
 });
 
-// 背包系统
-var backpack=new Array(50).fill(0);
-var pos_on_board=new Array(50).fill(0),total=50;
+// // 背包系统
+// var backpack=new Array(50).fill(0);
+// var pos_on_board=new Array(50).fill(0),total=50;
 
 
 // 场景管理
 var last_phase='',now_phase=''; // 记住名字
-var map=0;
+// var map=0;
 var option_now=0; // 用于判断角色是否可以移动
 
 
@@ -55,6 +55,9 @@ var old_knight=0;
 
 // gem_room
 var old_knight_gem=0;
+
+//na_street
+var old_knight_na_street=0;
 
 // 物品相关
 var paper_at_home=0;

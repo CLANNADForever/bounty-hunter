@@ -54,6 +54,8 @@ function dialog(man){
 			}
 			case 0:{
 				texture.innerHTML='1783年7月17日.';
+				loadSong('home and bar.mp3');
+				playSong();
 				init_dialog_at_home++;
 				break;
 			}
@@ -64,6 +66,7 @@ function dialog(man){
 			}
 			case 2:{
 				texture.innerHTML='但在今天，杰恩接到了一份神秘的委托……';
+
 				init_dialog_at_home=-1;
 				person='end';
 				break;
@@ -111,7 +114,7 @@ function dialog(man){
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学生';
+				title.innerHTML='学徒';
 				texture.innerHTML='抱歉先生，我没有见过，但您可以去问问调酒师，他认识的东西多嘞。';
 				student_01++;
 				person='end';
@@ -119,7 +122,7 @@ function dialog(man){
 			}
 			default:{ //_12_ 按理来讲如果直接去问后面了，应该跳进default，一点游戏设计
 				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学生';
+				title.innerHTML='学徒';
 				texture.innerHTML='莱茵城和纳安城是什么地方呢……' // _11_ 做成这种程度，1个人不够
 				person='end';
 				break;
@@ -215,7 +218,7 @@ function dialog(man){
 			}
 			case 2:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='老骑士';
+				title.innerHTML='韦斯';
 				texture.innerHTML='传说纳安城是最美好的乌托邦！';
 				old_knight++;
 			}
@@ -243,6 +246,8 @@ function dialog(man){
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
 				title.innerHTML='韦斯';
 				texture.innerHTML='那可真不幸，我喜欢广交朋友，现在地图是我的了（即将进入与韦斯的战斗）';
+				loadSong('game1.mp3');
+				playSong();
 				old_knight++;
 				break;
 			}
@@ -251,19 +256,26 @@ function dialog(man){
 				title.innerHTML='';
 				texture.innerHTML='(战斗结束了)';
 				$('.game1').css('display','block');
+				old_knight++; // HACK 很变态的写法，为了退出能直接赢，而如果你玩了游戏，结束后会设置值，这个++就无所谓了
 				break;
 			}
 			case 7:{
-				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='你赢了';
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='(我得赶快离开这里)';
+				pauseSong();
+				addachievement(2);
+				old_knight=14;
 				person='end';
 				break;
 			}
+
+
 			case 8:{
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='你不敌韦斯，被他抢走地图.';
+				pauseSong();
 				old_knight++;
 				break;
 			}
@@ -278,10 +290,76 @@ function dialog(man){
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='';
-				end(0);
+				end(1);
+				break;
+			}
+
+
+			case 14:{
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='问到你想要的消息了吗先生？要喝一杯吗？';
+				old_knight++;
+				break;
+			}
+			case 15:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='不用了，我......';
+				old_knight++;
+				break;
+			}
+			case 16:{
+				picture.innerHTML='<img src="./img/avatar/student_01.png">';
+				title.innerHTML='学徒';
+				texture.innerHTML='不好了，韦斯先生死了！';
+				old_knight++;
+				break;
+			}
+			case 17:{
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='哦 先生，看来您不能离开了';
+				old_knight++;
+				break;
+			}
+			case 18:{
+				picture.innerHTML='<img src="./img/avatar/student_01.png">';
+				title.innerHTML='学徒';
+				texture.innerHTML='我把护卫队叫来了';
+				old_knight++;
+				break;
+			}
+			case 19:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='(你被护卫队带走了)';
+				old_knight++;
 				break;
 			}
 			case 20:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='';
+				end(2);
+				break;
+			}
+
+			case 24:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='密室的入口是一段迷宫（即将进入迷宫）';
+				old_knight++;
+				break;
+			}
+			case 25:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（从迷宫出来之后，你们到达了密室的深处）';
+				$('.game2').css('display','block');
+				old_knight++;
+			}
+			case 26:{
 				text.style.display='none'; // 对话结束后关闭对话框
 				choice_zone.style.display='none';
 				person = 'none';
@@ -292,7 +370,7 @@ function dialog(man){
 	}
 	else if (man=='old_knight_gem'){
 		text.style.display='block'; // 在switch case前面开启显示，播完之后在interact自动关，不用在这里关
-		man_now='old_knight_gem';
+		//man_now='old_knight_gem';
 		switch(old_knight_gem){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
@@ -322,6 +400,98 @@ function dialog(man){
 			}
 		}
 	}
+
+	else if (man=='old_knight_na_street'){
+		text.style.display='block';
+		switch(old_knight_na_street){
+			case 0:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='哦杰恩，这个地方看上去真的美好极了！我要在这个地方定居了。';
+				old_knight_na_street++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='你呢杰恩？还要去做你的委托吗？你都有那么多酬金了，为什么不和我留在这里享受生活的乐趣？';
+				old_knight_na_street++;
+				break;
+			}
+			case 2:{ 
+				// 开始分岔  
+				// 这里应该不用做处理，即使再E，也会来到case4，只是重复设置这些元素而已，不会跳出（因为没++）
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='要放弃委托，和韦斯一起留在纳安城吗？（你的选择会影响到你的未来）';
+				choice_zone.style.display='block';
+				choice1.innerHTML='同意';
+				choice2.innerHTML='拒绝';
+				// 这里不应该++，否则不点按钮，e一下就过去了
+				break;
+			}
+			case 3:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='很聪明的决定，走吧，我看到了一家看起来很不错的酒馆，为我们的新生活喝一杯';
+				old_knight_na_street++;
+				break;
+			}
+			case 4:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='在纳安城的生活美好而虚无，这里的人们过着固定规律节奏的生活，时间长了，你与韦斯逐渐被这里同化，渐渐遗忘了你们的过去.......';
+				pauseSong();
+				addachievement(4);
+				old_knight_na_street++;
+				break;
+			}
+			case 5:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='';
+				end(3);
+				break;
+			}
+			case 10:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='好吧朋友，你可真是一个守信的赏金猎人';
+				old_knight_na_street++;
+				break;
+			}
+			case 11:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='那我把我的骑士勋章给你吧，让它代替我与你同行';
+				old_knight_na_street++;
+				break;
+			}
+			case 12:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（获得道具：骑士勋章）';
+				old_knight_na_street++;
+				break;
+			}
+			case 13:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩（收下骑士勋章）';
+				texture.innerHTML='我会的，等我完成这份委托我就回来找你';
+				old_knight_na_street++;
+				addachievement(5);
+				break;
+			}
+			default:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='To be Continue';
+				old_knight_na_street++;
+				person='end';
+				break;
+			}
+		}
+	}
 }
 
 // 点击按钮会触发对应的choice(0)或choice(1),在dialog要做的是：
@@ -339,8 +509,8 @@ function choice(num){
 			case 0:{
 				picture.innerHTML=''; // 旁白
 				title.innerHTML='';
-				texture.innerHTML='你与韦斯一拍即合结伴同行，在韦斯的带领下来到德莱伯爵的密室，而你要找的宝石钥匙就在里面.';
-				old_knight=20;
+				texture.innerHTML='你与韦斯一拍即合结伴同行，在韦斯的带领下来到德莱伯爵的密室.';
+				old_knight=24;
 				addachievement(1);
 				break;
 			}
@@ -355,8 +525,36 @@ function choice(num){
 			}
 		}
 	}
-	
+
+	else if(man_now=='old_knight_na_street'){
+		switch(num){
+			case 0:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='你说的很有道理韦斯，我已经有那么多报酬了，何必纠结这份委托';
+				old_knight_na_street++;//3
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='哦韦斯，谢谢你的好意，不过我已经接了这份委托，还是打算将它做完';
+				old_knight_na_street = 10;
+				break;
+			}
+		}
+	}
 }
+
+var tim=setInterval(function(){
+	if(now_phase=='bar'&&dis(hero.offsetLeft,hero.offsetTop,404,616)<=200&&old_knight>=14&&old_knight<=20){
+		person='old_knight';
+		dialog(person);
+		clearInterval(tim);
+	}
+},50);
+
+
 // if(man_now=='judge'){
 // 		switch(num)
 // 		{
