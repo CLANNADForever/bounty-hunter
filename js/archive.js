@@ -134,8 +134,9 @@ function reload(archive_num){
     trans = 'none';
     option_now = 0;
     var tim1=setInterval(function(){
-	    if(now_phase=='bar'&&dis(hero.offsetLeft,hero.offsetTop,404,616)<=200&&old_knight>=14&&old_knight<=20){
+	    if(now_phase=='bar'&&dis(hero.offsetLeft,hero.offsetTop,404,616)<=200&&old_knight>=15&&old_knight<=19){
             person='old_knight';
+            old_knight=15;
             dialog(person);
             clearInterval(tim1);
         }

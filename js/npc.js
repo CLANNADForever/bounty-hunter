@@ -1,8 +1,4 @@
 var man_now='none';
-var drji_choice_1=0;
-var drji_choice_2=0;
-var drji_choice_3=0;
-
 
 function dialog(man){
 	$('.container').css('margin-top','15px');
@@ -17,31 +13,6 @@ function dialog(man){
 	man_now=man;
 
 	// 添加示例NPC对话逻辑
-	if(man == 'example'){
-
-		text.style.display='block'; // 在switch case前面开启显示，播完之后在interact自动关，不用在这里关
-		// man_now='example';
-		picture.innerHTML='<img src="./img/avatar/jane.png">';
-		title.innerHTML='示例NPC';
-		switch(example){
-			case 0:{
-				texture.innerHTML='你好，这是你家吗？';
-				example++;
-				break;
-			}
-			case 1:{
-				texture.innerHTML='你问我为什么出现在你的家里？因为程序员在测试npc对话啊';
-				example++;
-				break;
-			}
-			case 2:{
-				texture.innerHTML='为什么我要说这么多话？因为在测试多轮对话啊，而且你再对话发现从第一句开始了，这也是测试的一部分';
-				example=0;
-				person='end'; // 结束标记
-				break;
-			}
-		}
-	}
 	if(man == 'init_dialog_at_home'){
 		text.style.display='block'; // 在switch case前面开启显示，播完之后在interact自动关，不用在这里关
 		// man_now='init_dialog_at_home';
@@ -58,7 +29,7 @@ function dialog(man){
 				break;
 			}
 			case 1:{
-				texture.innerHTML='上一个任务结束后，杰恩一直在这个小镇待着，借酒打发时间，今天已经是第三天了.';
+				texture.innerHTML='上一个任务结束后，杰恩一直在莱茵城的街上游荡，借酒打发时间，今天已经是第三天了.';
 				init_dialog_at_home++;
 				break;
 			}
@@ -77,7 +48,7 @@ function dialog(man){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/villager_01.png">';
 				title.innerHTML='卫兵';
-				texture.innerHTML='外乡人，看你的样子是长途跋涉而来吧？去街尾的‘雄狮之心’酒馆歇歇脚，那里的麦酒是镇上最好的。';
+				texture.innerHTML='外乡人，看你的样子是长途跋涉而来吧？去街尾的‘雄狮之心’酒馆歇歇脚，那里的麦酒是城里最好的。';
 				villager_01++;
 				person='end';
 				break;
@@ -85,7 +56,7 @@ function dialog(man){
 			default:{ //_6_ 游戏的小设计
 				picture.innerHTML='<img src="./img/avatar/villager_01.png">';
 				title.innerHTML='卫兵';
-				texture.innerHTML='外乡人，看你的样子是长途跋涉而来吧？去街尾的‘雄狮之心’酒馆歇歇脚，那里的麦酒是镇上最好的。';
+				texture.innerHTML='外乡人，看你的样子是长途跋涉而来吧？去街尾的‘雄狮之心’酒馆歇歇脚，那里的麦酒是城里最好的。';
 				person='end'; 
 				break;
 			}
@@ -175,29 +146,54 @@ function dialog(man){
 			}
 		}
 	}
+	else if (man == 'init_dialog_at_bar'){
+		text.style.display='block';
+		switch(init_dialog_at_bar){
+			case 0:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='“雄狮之心”酒馆，莱茵城的消息中转站。冒险者吹嘘着功绩，商人们交换着情报，而阴影里，则藏着这座城市的秘密。';
+				init_dialog_at_bar++;
+				person='end';
+				break;
+			}
+			default:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='';
+				break;
+			}
+		}
+	}
 	else if (man == 'student_01'){
 		text.style.display='block'; // 在switch case前面开启显示，播完之后在interact自动关，不用在这里关
-		// man_now='student_01';
 		switch(student_01){
 			case 0:{
-				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩';
-				texture.innerHTML='（把信件和地图展示给眼前的学徒）你见过这个东西吗？'; //_10_还是具体程度，或者说什么样子的内容是直接可用的
+				picture.innerHTML='<img src="./img/avatar/student_01.png">';
+				title.innerHTML='小学徒';
+				texture.innerHTML='先生，您是要打听消息吗？我...我没什么见识。'; //_10_还是具体程度，或者说什么样子的内容是直接可用的
 				student_01++;
 				break;
 			}
 			case 1:{
-				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学徒';
-				texture.innerHTML='抱歉先生，我没有见过，但您可以去问问调酒师，他认识的东西多嘞。';
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（向她展示地图）你见过这个吗？';
 				student_01++;
-				person='end';
 				break;
 			}
-			default:{ //_12_ 按理来讲如果直接去问后面了，应该跳进default，一点游戏设计
+			case 2:{ //_12_ 按理来讲如果直接去问后面了，应该跳进default，一点游戏设计
 				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学徒';
-				texture.innerHTML='莱茵城和纳安城是什么地方呢……' // _11_ 做成这种程度，1个人不够
+				title.innerHTML='小学徒';
+				texture.innerHTML='这个...我没见过。不过，也许调酒师先生知道。您去问问他吧，他人很好的。' // _11_ 做成这种程度，1个人不够
+				student_01++;
+				person='end'
+				break;
+			}
+			default:{
+				picture.innerHTML='<img src="./img/avatar/student_01.png">';
+				title.innerHTML='小学徒';
+				texture.innerHTML='（小声）先生，您...最好别去招惹角落里那个喝酒的老爷爷。他今天心情好像特别差。';
 				person='end';
 				break;
 			}
@@ -205,28 +201,40 @@ function dialog(man){
 	}
 	else if (man == 'barman') {
 		text.style.display='block'; 
-		// man_now='barman';
-		student_01 = 2;
+		student_01 = 3;
 		switch(barman){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/barman.png">';
 				title.innerHTML='调酒师';
-				texture.innerHTML='我是这小镇里花样最多的调酒师，想来杯什么样的酒？';
+				texture.innerHTML='你好，旅人。想喝点什么，还是想买点什么消息？';
 				barman++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='我不是来买酒的。（把手头的信件和地图递了过去）';
+				texture.innerHTML='我不是来买酒的。（把手头地图递了过去）';
 				barman++;
 				break;
 			}
 			case 2:{
 				picture.innerHTML='<img src="./img/avatar/barman.png">';
 				title.innerHTML='调酒师';
-				// texture.innerHTML='我也不知道这个，不过我可以带你去找老骑士韦斯，他知道的东西多，但他性格不太好。'; //_13_ 可行性，不要想当然
-				texture.innerHTML='我也不知道这个，去二楼问问老骑士韦斯吧，他知道的东西多，但他性格不太好。';
+				texture.innerHTML='这东西...我好像有点印象，但记不清了。不过，有个人肯定知道。';
+				barman++;
+				break;
+			}
+			case 3:{
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='看到角落里的韦斯爵士了吗？他年轻时是伯爵的首席骑士，对伯爵府的收藏了如指掌。';
+				barman++;
+				break;
+			}
+			case 4:{
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='唉...只是，他自从上次任务失败后，就一直这样消沉。你跟他说话小心点，别提起那件事，他现在很执拗。';
 				barman++;
 				person='end';
 				break;
@@ -234,98 +242,158 @@ function dialog(man){
 			default:{
 				picture.innerHTML='<img src="./img/avatar/barman.png">';
 				title.innerHTML='调酒师';
-				texture.innerHTML='去问问韦斯吧，他可是我的老顾客。';
+				texture.innerHTML='去问问韦斯吧，他也是我的老顾客了。';
 				person='end';
 				break;
 			}
 		}
 	}
-
-
-	else if (man=='old_knight_gem'){
-		text.style.display='block'; // 在switch case前面开启显示，播完之后在interact自动关，不用在这里关
-		//man_now='old_knight_gem';
-		switch(old_knight_gem){
+	else if (man == 'mercenary_01'){
+		text.style.display='block'; 
+		mercenary_02 = 3;
+		switch(mercenary_01){
 			case 0:{
-				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='嘿杰恩，看到那里的宝石了吗？那就是你要找的钥匙，去拿吧。';
-				old_knight_gem++;
-				person='end';
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（你听到两个看起来身手不凡的佣兵正在压低声音交谈。）';
+				mercenary_01++;
 				break;
 			}
 			case 1:{
-				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='你去拿宝石吧，我在这儿替你守着';
-				old_knight_gem++;
+				picture.innerHTML='<img src="./img/avatar/mercenary_01.png">';
+				title.innerHTML='佣兵';
+				texture.innerHTML='听说了吗？德莱伯爵最近又在招人了，赏金很高，但任务是去那个地方...';
+				mercenary_01++;
+				break;
+			}
+			case 2:{
+				picture.innerHTML='<img src="./img/avatar/mercenary_02.png">';
+				title.innerHTML='老练的佣兵';
+				texture.innerHTML='哼，再多钱我也不去。那鬼地方，就算是当年的‘雄狮’韦斯带队，也折损了一半人手。现在就他一个老酒鬼，谁敢去？';
+				mercenary_01++;
 				person='end';
 				break;
 			}
-			default:{ 
-				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='哦杰恩，需要思考的事我没法帮你，但我会替你守好门的';
-				person='end';
+			default:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（两个佣兵不再交谈，只是闷头喝酒）';
+				person='end'
 				break;
 			}
 		}
 	}
-
+	else if (man == 'mercenary_02'){
+		text.style.display='block'; 
+		mercenary_01 = 3;
+		switch(mercenary_02){
+			case 0:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（你听到两个看起来身手不凡的佣兵正在压低声音交谈。）';
+				mercenary_02++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/mercenary_01.png">';
+				title.innerHTML='佣兵';
+				texture.innerHTML='听说了吗？德莱伯爵最近又在招人了，赏金很高，但任务是去那个地方...';
+				mercenary_02++;
+				break;
+			}
+			case 2:{
+				picture.innerHTML='<img src="./img/avatar/mercenary_02.png">';
+				title.innerHTML='老练的佣兵';
+				texture.innerHTML='哼，再多钱我也不去。那鬼地方，就算是当年的‘雄狮’韦斯带队，也折损了一半人手。现在就他一个老酒鬼，谁敢去？';
+				mercenary_02++;
+				person='end';
+				break;
+			}
+			default:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（两个佣兵不再交谈，只是闷头喝酒）';
+				person='end'
+				break;
+			}
+		}
+	}
 	else if (man == 'old_knight'){
 		text.style.display='block'; 
 		// man_now='old_knight';
 		switch(old_knight){
 			case 0:{
-				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩';
-				texture.innerHTML='（把地图展示给韦斯）你见过这个东西吗？';
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（一个上了年纪的男人在自言自语，桌上放着一枚褪色的骑士勋章。他紧紧攥着酒杯，眼神在追忆与不甘中摇曳。）';
 				old_knight++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='（看了信件）哦！年轻人，你要找去纳安城的钥匙！';
+				title.innerHTML='老骑士韦斯';
+				texture.innerHTML='又一个任务失败了...不...我没有失败！是他们...是他们太弱了！';
 				old_knight++;
 				break;
 			}
 			case 2:{
-				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='传说纳安城是最美好的乌托邦！';
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='(向他展示地图)';
 				old_knight++;
+				break;
 			}
 			case 3:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='如果你答应让我与你同行的话，我将帮你拿到宝石钥匙！';
+				title.innerHTML='老骑士韦斯';
+				texture.innerHTML='（他抬起浑浊的眼睛，但看到地图的瞬间，瞳孔骤然收缩） 德莱的密室和宝石钥匙！你要...你要去纳安城？';
 				old_knight++;
 				break;
 			}
-			case 4:{ 
+			case 4:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='老骑士韦斯';
+				texture.innerHTML='年轻人，我知道它在哪。我可以带你去，甚至可以帮你拿到。但你必须答应我，与我同行！让我亲眼看看，那个地方...究竟是不是传说中的乌托邦！';
+				old_knight++;
+				break;
+			}
+			case 5:{ 
 				// 开始分岔  
-				// 这里应该不用做处理，即使再E，也会来到case4，只是重复设置这些元素而已，不会跳出（因为没++）
+				// 这里应该不用做处理，即使再E，也会来到case5，只是重复设置这些元素而已，不会跳出（因为没++）
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='要与韦斯同行吗？（你的选择会影响到你的未来）';
+				texture.innerHTML='......';
 				choice_zone.style.display='block';
-				choice1.innerHTML='同意';
-				choice2.innerHTML='拒绝';
+				choice1.innerHTML='我同意你的条件';
+				choice2.innerHTML='我需要自己考虑';
 				// 这里不应该++，否则不点按钮，e一下就过去了
 				break;
 			}
-			//这里不是从4++继续的，而是一个跳变
-			case 5:{
+			//这里不是从5++继续的，而是一个跳变
+			case 6:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-				title.innerHTML='韦斯';
-				texture.innerHTML='那可真不幸，我喜欢广交朋友，现在地图是我的了（即将进入与韦斯的战斗）';
+				title.innerHTML='老骑士韦斯';
+				texture.innerHTML='考虑？不！没有时间考虑了！这是我最后的机会！你不带我去，就休想从我这里得到任何消息！';
+				old_knight++;
+				break;
+			}
+			case 7:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='韦斯的情绪突然激动起来，他视这次旅行为最后的救赎，任何阻碍他的人，都是敌人。他拔出了腰间的旧剑！';
+				old_knight++;
+				break;
+			}
+			case 8:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（即将进入与韦斯的战斗）';
 				loadSong('game1.mp3');
 				playSong();
 				old_knight++;
 				break;
 			}
-			case 6:{
+			case 9:{
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='(战斗结束了)';
@@ -333,85 +401,73 @@ function dialog(man){
 				old_knight++; // HACK 很变态的写法，为了退出能直接赢，而如果你玩了游戏，结束后会设置值，这个++就无所谓了
 				break;
 			}
-			case 7:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='(我得赶快离开这里)';
-				pauseSong();
-				addachievement(2);
-				old_knight=14;
-				person='end';
-				break;
-			}
-
-
-			case 8:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='你不敌韦斯，被他抢走地图.';
-				pauseSong();
-				old_knight++;
-				break;
-			}
-			case 9:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='酒馆里的人都与韦斯是老朋友了，他们帮忙将你除去，没对这个地方产生任何影响.';
-				old_knight++;
-				break;
-			}
 			case 10:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='';
-				end(1);
-				break;
-			}
-
-
-			case 14:{
-				picture.innerHTML='<img src="./img/avatar/barman.png">';
-				title.innerHTML='调酒师';
-				texture.innerHTML='问到你想要的消息了吗先生？要喝一杯吗？';
+				texture.innerHTML='最后一击...韦斯沉重地倒下了。他的旧剑脱手而出，在木地板上发出空洞的声响。';
+				addachievement(2);
 				old_knight++;
 				break;
 			}
+			case 11:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='他躺在地上，大口喘着气，浑浊的眼睛望着天花板，仿佛看到了什么。';
+				old_knight++;
+				break;
+			}
+			case 12:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='老骑士韦斯';
+				texture.innerHTML='（气若游丝）...这样啊...我终究...还是没能再出发一次......';
+				old_knight++;
+				break;
+			}
+			case 13:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='他最后看了一眼桌上的骑士勋章，眼神中的光芒彻底熄灭了。';
+				old_knight++;
+				break;
+			}
+			case 14:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='你从他身上搜出了一张德莱伯爵密室的陈旧地图。酒馆里所有人的目光都聚焦在你身上，充满了敌意。必须快点离开！';
+				old_knight++;
+				person='end';
+				npc=[]; // 清空npc
+				break;
+			}
 			case 15:{
-				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩';
-				texture.innerHTML='不用了，我......';
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='外乡人，在我们这儿，有我们这儿的规矩。';
 				old_knight++;
 				break;
 			}
 			case 16:{
-				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学徒';
-				texture.innerHTML='不好了，韦斯先生死了！';
+				picture.innerHTML='<img src="./img/avatar/barman.png">';
+				title.innerHTML='调酒师';
+				texture.innerHTML='韦斯爵士...是我们看着他从英雄变成酒鬼的。他可以死在战场上，可以死在酒桌上，但不该死在一个不知来路的赏金猎人手上。';
 				old_knight++;
 				break;
 			}
 			case 17:{
 				picture.innerHTML='<img src="./img/avatar/barman.png">';
 				title.innerHTML='调酒师';
-				texture.innerHTML='哦 先生，看来您不能离开了';
+				texture.innerHTML='放下你该放下的，然后离开。永远别再回来。';
 				old_knight++;
 				break;
 			}
 			case 18:{
-				picture.innerHTML='<img src="./img/avatar/student_01.png">';
-				title.innerHTML='学徒';
-				texture.innerHTML='我把护卫队叫来了';
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='你看着周围一双双充满敌意的眼睛，知道自己没有选择。你放下了那份密室的地图，在沉默的注视下，离开了酒馆。';
 				old_knight++;
 				break;
 			}
 			case 19:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='(你被护卫队带走了)';
-				old_knight++;
-				break;
-			}
-			case 20:{
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='';
@@ -419,27 +475,73 @@ function dialog(man){
 				break;
 			}
 
-			case 24:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='密室的入口是一段迷宫（即将进入迷宫）';
-				old_knight++;
-				break;
-			}
+
+
 			case 25:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='（从迷宫出来之后，你们到达了密室的深处）';
-				$('.game2').css('display','block');
+				texture.innerHTML='你的尸体被悄无声息地处理掉，就像从未出现在这个酒馆一样。而老骑士的故事，仍将继续。';
 				old_knight++;
+				break;
 			}
 			case 26:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='';
+				end(1);
+				break;
+			}
+
+			case 30:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（老骑士韦斯长舒一口气，仿佛卸下了千斤重担，浑浊的眼中闪过一丝光芒）';
+				old_knight++;
+				break;
+			}
+			case 31:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='...很好。我们...我们终于可以再次出发了。';
+				addachievement(1);
+				old_knight++;
+				break;
+			}
+			case 32:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='';
 				text.style.display='none'; // 对话结束后关闭对话框
 				choice_zone.style.display='none';
 				person = 'none';
-				transform('gem_room');
+				cg(7);
 				break;
 			}
+
+
+			
+
+			// case 24:{
+			// 	picture.innerHTML='';
+			// 	title.innerHTML='';
+			// 	texture.innerHTML='密室的入口是一段迷宫（即将进入迷宫）';
+			// 	old_knight++;
+			// 	break;
+			// }
+			// case 25:{
+			// 	picture.innerHTML='';
+			// 	title.innerHTML='';
+			// 	texture.innerHTML='（从迷宫出来之后，你们到达了密室的深处）';
+			// 	$('.game2').css('display','block');
+			// 	old_knight++;
+			// }
+			// case 26:{
+			// 	text.style.display='none'; // 对话结束后关闭对话框
+			// 	choice_zone.style.display='none';
+			// 	person = 'none';
+			// 	transform('gem_room');
+			// 	break;
+			// }
 		}
 	}
 	else if (man=='old_knight_gem'){
@@ -467,9 +569,6 @@ function dialog(man){
 				title.innerHTML='韦斯';
 				texture.innerHTML='哦杰恩，需要思考的事我没法帮你，但我会替你守好门的';
 				person='end';
-
-				text.style.display='none'
-				transform('gem_room');
 				break;
 			}
 		}
@@ -1089,14 +1188,14 @@ function dialog(man){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='这个方向人比较少，还是去那边的酒馆问问吧';
+				texture.innerHTML='这个方向人比较少，还是去那边问问吧。';
 				person='end';
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='优秀的赏金猎人要对目的地了如指掌，还是去酒馆里问问吧';
+				texture.innerHTML='优秀的赏金猎人要对目的地了如指掌，还是去酒馆里问问吧。';
 				person='end';
 				break;
 			}
@@ -1153,20 +1252,19 @@ function choice(num){
 	if (man_now=='old_knight'){
 		switch(num){
 			case 0:{
-				picture.innerHTML=''; // 旁白
-				title.innerHTML='';
-				texture.innerHTML='你与韦斯一拍即合结伴同行，在韦斯的带领下来到德莱伯爵的密室.';
-				old_knight=24;
-				addachievement(1);
+				picture.innerHTML='<img src="./img/avatar/jane.png">'; // 旁白
+				title.innerHTML='杰恩';
+				texture.innerHTML='我同意你的条件。';
+				old_knight=30;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='很抱歉，我喜欢独自完成委托';
+				texture.innerHTML='我需要自己考虑。';
 				// 这里也不应调用dialog，而是让玩家E一下，自然就进入新对话了
 				// 因为old_knight变化了，person没变，所以会回到骑士的case5
-				old_knight=5; 
+				old_knight=6; 
 				break;
 			}
 		}
@@ -1229,9 +1327,9 @@ function choice(num){
 
 
 var tim1=setInterval(function(){ // 老骑士的结局
-	if(now_phase=='bar'&&dis(hero.offsetLeft,hero.offsetTop,404,616)<=200&&old_knight>=14&&old_knight<=20){
+	if(now_phase=='bar'&&dis(hero.offsetLeft,hero.offsetTop,404,616)<=200&&old_knight>=15&&old_knight<=19){
 		person='old_knight';
-		old_knight=14;
+		old_knight=15;
 		dialog(person);
 		clearInterval(tim1);
 	}

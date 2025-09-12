@@ -4,7 +4,14 @@ const ctx = canvas.getContext("2d");
 const backgroundImg = new Image();
 backgroundImg.src = "./assets/image/tavern_second_floor.png"; // 背景图
 
+document.querySelector('.click-disappear').addEventListener('click', function() {
+  this.classList.add('active'); // 原本的消失效果
+  gameRunning = true;           // 设置为运行状态
+  gameLoop();                   // 启动游戏循环
+});
 
+let gameRunning = false;
+let screenFlashAlpha = 0; // 新增：屏幕闪红效果
 // 玩家 & 敌人属性
 let player = { 
   x: 200, y: 300, width: 50, height: 80, 
@@ -13,8 +20,10 @@ let player = {
 };
 let enemy  = { 
   x: 550, y: 300, width: 50, height: 80, 
-  health: 100, speed: 3.5, attacking: false, attackFrame: 0,
-  jumping: false, vy: 0, facing: "left"
+  health: 100, speed: 2, attacking: false, attackFrame: 0,
+  jumping: false, vy: 0, facing: "left",
+  attackCooldown: 500, // 1 second cooldown
+  lastAttackTime: 0
 };
 
 const gravity = 0.6;
@@ -30,7 +39,7 @@ document.addEventListener("keydown", e => {
     player.attackFrame = 0;
   }
 
-  if (e.key === "w" && !player.jumping) {
+  if (e.key === " " && !player.jumping) {
     player.jumping = true;
     player.vy = -12;
   }
@@ -89,11 +98,16 @@ function drawEntity(entity, isPlayer) {
 
     if (entity.attackFrame === 6) {
       if (isPlayer && checkCollision(entity, enemy)) {
-        enemy.health = Math.max(0, enemy.health - 10);
+        enemy.health = Math.max(0, enemy.health - 8);
+        const direction = player.facing === 'right' ? 1 : -1;
+        enemy.x += direction * 25; // Knockback
         console.log("玩家击中敌人！敌人血量:", enemy.health);
       }
-      if (!isPlayer && checkCollision(entity, player)) {
-        player.health = Math.max(0, player.health - 8);
+      if (!isPlayer && checkCollision(entity, player) && !player.jumping) {
+        player.health = Math.max(0, player.health - 14);
+        const direction = enemy.facing === 'right' ? 1 : -1;
+        player.x += direction * 15; // Knockback
+        screenFlashAlpha = 0.5; // 新增：触发闪红
         console.log("敌人击中玩家！玩家血量:", player.health);
       }
     }
@@ -133,7 +147,7 @@ function updatePlayer() {
 function updateEnemy() {
   let distance = Math.abs(player.x - enemy.x);
 
-  if (distance > 70) {
+  if (distance > 45) {
     if (player.x < enemy.x) {
       enemy.x -= enemy.speed;
       enemy.facing = "left";
@@ -143,10 +157,10 @@ function updateEnemy() {
     }
   }
 
-  if (!enemy.jumping && Math.random() < 0.005) {
-    enemy.jumping = true;
-    enemy.vy = -10;
-  }
+  // if (!enemy.jumping && Math.random() < 0.005) {
+  //   enemy.jumping = true;
+  //   enemy.vy = -10;
+  // }
 
   if (enemy.jumping) {
     enemy.y += enemy.vy;
@@ -157,11 +171,11 @@ function updateEnemy() {
     }
   }
 
-  if (!enemy.attacking) {
-    if (distance < 100 && Math.random() < 0.02) {
-      enemy.attacking = true;
-      enemy.attackFrame = 0;
-    }
+  const now = Date.now();
+  if (!enemy.attacking && distance < 70 && now - enemy.lastAttackTime > enemy.attackCooldown) {
+    enemy.attacking = true;
+    enemy.attackFrame = 0;
+    enemy.lastAttackTime = now;
   }
 }
 
@@ -181,18 +195,29 @@ function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
 
-  updatePlayer();
-  updateEnemy();
+  // 游戏运行时才更新逻辑
+  if (gameRunning) {
+    updatePlayer();
+    updateEnemy();
+  }
 
+  // 无论是否运行，都绘制角色和血条
   drawEntity(player, true);
   drawEntity(enemy, false);
-
   drawHealthBars();
+
+  // 新增：绘制屏幕闪红
+  if (screenFlashAlpha > 0) {
+    ctx.fillStyle = `rgba(255, 0, 0, ${screenFlashAlpha})`;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    screenFlashAlpha = Math.max(0, screenFlashAlpha - 0.05); // 逐渐减弱
+  }
 
   if (player.health <= 0) {
     ctx.fillStyle = "white";
     ctx.font = "40px Arial";
     ctx.fillText("你输了！", 330, 200);
+    gameRunning = false;
     if (window.parent) {
         window.parent.postMessage('lose_game1', '*');
     }
@@ -200,14 +225,18 @@ function gameLoop() {
     ctx.fillStyle = "white";
     ctx.font = "40px Arial";
     ctx.fillText("你赢了！", 330, 200);
+    gameRunning = false;
     if (window.parent) {
         window.parent.postMessage('win_game1', '*');
     }
+  }
 
-  } else {
+  // 持续绘制循环
+  if (gameRunning) {
     requestAnimationFrame(gameLoop);
   }
 }
+
 
 // 替换现有的backgroundImg.onload
 let imagesLoaded = 0;

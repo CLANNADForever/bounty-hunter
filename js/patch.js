@@ -51,6 +51,9 @@ function skipCurrentCg(cgId) {
 		addachievement(8);
 		end(7);
 	}
+	else if(cgId === 7){
+		$('.game2').css('display','block');
+	}
 	
 }
 
@@ -341,5 +344,40 @@ function cg(id){
             $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
 		},19000));
+	}
+
+	else if(id==7){
+		$('.background_board').css('display','none'); // 背景板隐藏
+		$('.caption').css('display','none'); // 字幕隐藏
+		$('.curtain').css('display','block'); // 幕布显示
+        $('#cg-container').css('display', 'flex');
+
+		// setTimeout是异步的，不阻塞其他代码执行
+		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
+		
+		cgTimeouts.push(setTimeout(function(){
+			loadSong('backroom.mp3');
+			playSong();
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/with_old_knight.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('韦斯对德莱伯爵密室的守卫和机关轻车熟路，你们很快到达了密室的深处...').fadeIn(1000);
+		},1000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 8秒后文字用0.5秒淡出
+		
+		cgTimeouts.push(setTimeout(function(){
+			$('#skipCgButton').hide(); // CG结束后隐藏按钮
+            $('.curtain').hide();
+            $('#cg-container').hide();
+            clearCgTimeouts(); // 清除所有定时器
+		},7000));
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.game2').css('display','block');
+		},6900));
+		
 	}
 }

@@ -179,7 +179,7 @@
 			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: -1; pointer-events: none;"></div>
 			<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
 				<iframe src="./minigame/game1/game.html" style="width:100%; height:90%; border: 0cm;"></iframe>
-				<button onclick="$('.game1').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button>
+				<!-- <button onclick="$('.game1').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button> -->
 			</div>
 		</div>
 
@@ -188,18 +188,10 @@
 			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: -1; pointer-events: none;"></div>
 			<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
 				<iframe src="./minigame/game2/game.html" style="width:100%; height:90%; border: 0cm;"></iframe>
-				<button onclick="$('.game2').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button>
+				<!-- <button onclick="$('.game2').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button> -->
 			</div>
 		</div>
 		
-		<div class="game3" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
-
-			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: -1; pointer-events: none;"></div>
-			<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-				<iframe src="./minigame/game3/game.html" style="width:100%; height:90%; border: 0cm;"></iframe>
-				<button onclick="$('.game3').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button>
-			</div>
-		</div>
 
 		<div class="loadpage" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
 			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0); z-index: -1; pointer-events: none;"></div>
@@ -519,19 +511,32 @@
 			// }
 
 			if (event.data === 'win_game1') {
-				old_knight = 7;
+				old_knight = 10;
 				setTimeout(function(){
 					$('.game1').css('display', 'none');
-				}, 1000);
+					pauseSong();
+				}, 2000);
 			} else if (event.data === 'lose_game1') {
-				old_knight = 8;
+				old_knight = 25;
 				setTimeout(function(){
 					$('.game1').css('display', 'none');
-				}, 1000);
-			} else if (event.data === 'win_game3') {
-				newspaper_boy = 1;
-			} else if (event.data === 'lose_game3') {
-				newspaper_boy = 4;
+					pauseSong();
+				}, 2000);
+			} else if (event.data === 'win_game2') {
+				setTimeout(function(){
+					$('.game2').css('display', 'none');
+				}, 2000);
+				setTimeout(function(){
+					transform('gem_room');
+				}, 2000);
+			} else if (event.data === 'lose_game2') {
+				setTimeout(function(){
+					$('.game2').css('display', 'none');
+					pauseSong();
+				}, 2000);
+				setTimeout(function(){
+					end(8);
+				}, 2000);
 			}
 		});
 	</script>

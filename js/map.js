@@ -182,6 +182,10 @@ function loadmap(phase){
 			loadSong('home and bar.mp3');
 			playSong();
 		}
+		if (init_dialog_at_bar == 0){
+			person='init_dialog_at_bar';
+			dialog(person);
+		}
 		
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/bar.png), url(./img/black_background.jpg)";
@@ -205,7 +209,7 @@ function loadmap(phase){
 			$('.hero').css('background-position-y','0'); // 将背景图片居中显示
 		}
 		
-		npc=[[240,475, 70, 'barman'], [541, 448, 50, 'student_01'], [691, 221, 55, 'old_knight']]; 
+		npc=[[240,475, 70, 'barman'], [525, 448, 50, 'student_01'], [691, 221, 55, 'old_knight'], [330, 221, 50, 'mercenary_01'] ,[385, 265, 50, 'mercenary_02']]; 
 		object=[];
 		door=[[404,616,50,'street_from_home_to_bar']]; 
 
@@ -217,7 +221,7 @@ function loadmap(phase){
 
 		$('#npc2').css('display','block');
 		$('#npc2').css('background-image','url("./img/character/student_01.png")');
-		$('#npc2').css('left','541px');
+		$('#npc2').css('left','525px');
 		$('#npc2').css('top','448px');
 		$('#npc2').attr('data-orientation', 'down');
 
@@ -227,8 +231,18 @@ function loadmap(phase){
 		$('#npc3').css('top','221px');
 		$('#npc3').attr('data-orientation', 'down');
 
-		$('#npc4').css('display','none');
-		$('#npc5').css('display','none');
+		$('#npc4').css('display','block');
+		$('#npc4').css('background-image','url("./img/character/mercenary_01.png")');
+		$('#npc4').css('left','330px');
+		$('#npc4').css('top','221px');
+		$('#npc4').attr('data-orientation', 'down');
+		
+		$('#npc5').css('display','block');
+		$('#npc5').css('background-image','url("./img/character/mercenary_02.png")');
+		$('#npc5').css('left','385px');
+		$('#npc5').css('top','265px');
+		$('#npc5').attr('data-orientation', 'left');
+		
 		$('#npc6').css('display','none');
 		
 	
@@ -262,6 +276,9 @@ function loadmap(phase){
 		$('#npc1').css('top','525px'); 
 		$('#npc2').css('display','none');
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 	
 	}
 
@@ -291,6 +308,9 @@ function loadmap(phase){
 		$('#npc1').css('top','460px');
 		$('#npc2').css('display','none');
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 	}
 
 	else if(phase=='na_street_01'){
@@ -323,6 +343,9 @@ function loadmap(phase){
 		$('#npc2').css('left','810px');
 		$('#npc2').css('top','530px'); 
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 
 	}
 	else if(phase=='na_street_02'){
@@ -361,6 +384,9 @@ function loadmap(phase){
 		$('#npc2').css('left','300px');
 		$('#npc2').css('top','540px');
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 
 	}
 	else if(phase=='na_street_03'){
@@ -396,6 +422,9 @@ function loadmap(phase){
 		$('#npc3').css('background-image','url("./img/character/vina.png")');
 		$('#npc3').css('left','150px');
 		$('#npc3').css('top','460px');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 
 	}
 	else if(phase=='lab'){
@@ -425,6 +454,9 @@ function loadmap(phase){
 		$('#npc1').css('top','370px'); 
 		$('#npc2').css('display','none');
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 	
 	}
 
@@ -468,6 +500,9 @@ function loadmap(phase){
 		$('#npc3').css('left','480px');
 		$('#npc3').css('top','490px');
 		$('#npc3').css('background-position-y','-144px')
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 	}
 
 	else if(phase=='lab3'){
@@ -506,6 +541,9 @@ function loadmap(phase){
 		$('#npc2').css('left','370px');
 		$('#npc2').css('top','400px'); 
 		$('#npc3').css('display','none');
+		$('#npc4').css('display','none');
+		$('#npc5').css('display','none');
+		$('#npc6').css('display','none');
 		
 	}
 	highlightTimer = setInterval(checkObjectProximity, 100);

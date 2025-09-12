@@ -5,7 +5,7 @@ const nextBtn = document.getElementById('next');
 const audio = document.getElementById('audio');
 
 // Song titles
-const songs = ['home and bar.mp3','gate of steiner.mp3', 'summer pocket.mp3', 'sea you and me.mp3','game1.mp3', 'OP.mp3', 'game3.mp3', ]; //_3_ bgm
+const songs = ['home and bar.mp3','gate of steiner.mp3', 'summer pocket.mp3', 'sea you and me.mp3','game1.mp3', 'OP.mp3', 'game3.mp3', 'backroom.mp3']; //_3_ bgm
 
 // Keep track of song
 let songIndex = 0;
