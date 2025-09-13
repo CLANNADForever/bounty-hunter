@@ -115,26 +115,75 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('从密室离开后没多久，德莱伯爵就发现宝石不见了，派出卫兵搜捕你们，但是好在韦斯对莱茵城很熟悉，你们成功躲避了追兵，从码头乘船离开莱茵城。'); 
+			$('.background_board').css({
+				'background-image': 'url(./img/cg/to_naan1.png)',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('在韦斯的带领下，你们避开了卫兵，又一次遁入了莱茵城古老的地下暗道...').fadeIn(1000);
+		}, 2000));
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(1000);
+			$('.background_board').fadeOut(1000);
+		},7000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('穿过城市的脉络，你们终于在天亮前抵达了废弃的码头。').fadeIn(1000); 
+			$('.background_board').css({
+				'background-image': 'url(./img/cg/to_naan2.png)',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+
+		},9000));
+		
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(1000);
+			$('.background_board').fadeOut(1000);
+		},14000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url(./img/cg/to_naan3.png)',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+		},15000));
+
+		cgTimeouts.push(setTimeout(function(){
+			pauseSong();
+			$('.caption').html('不知在海上漂泊了多久...'); // 设置文字内容为"直到某次机缘巧合成为赏金猎人，他漂泊无依的生活才有了一点方向……"
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},15000));
+
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",17000)); // 8秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').fadeOut(1000);
+		},20000));
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('...直到那座传说中的城市，出现在海的尽头。'); // 设置文字内容为"在这个世界上，他没有家人，没有朋友，没有记忆"
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
 			loadSong('sea you and me.mp3');
 			playSong();
-		},1000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 4秒后文字用0.5秒淡出
+		},18000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url(./img/cg/to_naan4.png)',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+		},21000));
 
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你与韦斯在海上漂了几天，终于找到了那个神秘的纳安城'); // 设置文字内容为"在这个世界上，他没有家人，没有朋友，没有记忆"
-			
-			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-		},7000));
-		
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",11000)); // 4秒后文字用0.5秒淡出
-
-		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('这是一座在海岛上的城池，人群熙熙攘攘，街道两侧的商品琳琅满目。只是奇怪的是，这座临海城市居然没有来自海里的物产，而且这里的每个人身上似乎都带着一种迷茫'); // 设置文字内容为"直到某次机缘巧合成为赏金猎人，他漂泊无依的生活才有了一点方向……"
-			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-		},13000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",21000)); // 8秒后文字用0.5秒淡出
+			$('.caption').fadeOut(1000);
+			$('.background_board').fadeOut(1000);
+		},28000));
 		
 		cgTimeouts.push(setTimeout(function(){
             transform('na_street');
@@ -142,7 +191,7 @@ function cg(id){
             $('.curtain').hide();
             $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
-		},19000));
+		},30000));
 	}
 	else if(id==2) {//前往高塔CG
 		// 第一阶段：初始化显示状态
@@ -156,48 +205,41 @@ function cg(id){
 		// --- Scene 1 ---
 		cgTimeouts.push(setTimeout(function(){
 			$('.background_board').css({
-				'background-image': 'url("./img/cg/1.png")',
+				'background-image': 'url("./img/cg/to_tower1.png")',
 				'background-size': 'cover',
 				'background-position': 'center',
 				'background-repeat': 'no-repeat'
 			}).fadeIn(1000);
-			$('.caption').html('你在纳安城打听了很久，但是这里的人都是这样一问三不知。').fadeIn(1000);
+			$('.caption').html('你在纳安城打听了很久，但是这里的人都是这样一问三不知，言语间充满了诡异的重复和矛盾。').fadeIn(1000);
 		},1000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",6000)); // 1s + 1s fadeIn + 4s duration
-
+		cgTimeouts.push(setTimeout("$('.background_board').fadeOut(500)",6000))
 		// --- Transition to Scene 2 ---
-		cgTimeouts.push(setTimeout(function() {
-			$('.background_board').fadeOut(1000, function() {
-				$(this).css({
-					'background-image': 'url("./img/cg/2.png")',
-					'background-size': 'cover',
-					'background-position': 'center',
-					'background-repeat': 'no-repeat'
-				}).fadeIn(1000);
-			});
-		}, 6500)); // Start fade out after caption starts fading out
 
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('一筹莫展之际，你发现了一个神秘的高塔，大门上缺口形状与密室中的宝石钥匙不谋而合').fadeIn(1000);
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/to_tower2.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('一筹莫展之际，你想起了那个居民提到的建议。你抬起头，视线被城中央那座高耸入云的建筑吸引了。').fadeIn(1000);
 		}, 8500)); // 6.5s + 1s fadeOut + 1s fadeIn
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",13500)); // 8.5s + 1s fadeIn + 4s duration
+		cgTimeouts.push(setTimeout("$('.background_board').fadeOut(500)",13500))
 
-		// --- Transition to Scene 3 ---
-		cgTimeouts.push(setTimeout(function() {
-			$('.background_board').fadeOut(1000, function() {
-				$(this).css({
-					'background-image': 'url("./img/cg/3.png")',
-					'background-size': 'cover',
-					'background-position': 'center',
-					'background-repeat': 'no-repeat'
-				}).fadeIn(1000);
-			});
-		}, 14000)); // Start fade out after caption starts fading out
 
 		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/to_tower3.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
 			$('.caption').html('当宝石钥匙嵌入高塔大门的孔洞时，门缓缓打开').fadeIn(1000);
-		}, 16000)); // 14s + 1s fadeOut + 1s fadeIn
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",21000)); // 16s + 1s fadeIn + 4s duration
+		}, 15000)); // 14s + 1s fadeOut + 1s fadeIn
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",20000)); // 16s + 1s fadeIn + 4s duration
+		cgTimeouts.push(setTimeout("$('.background_board').fadeOut(500)",20000))
 		
 		// --- End CG ---
 		cgTimeouts.push(setTimeout(function(){
@@ -354,10 +396,10 @@ function cg(id){
 
 		// setTimeout是异步的，不阻塞其他代码执行
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
-		
+		loadSong('backroom.mp3');
+		playSong();
 		cgTimeouts.push(setTimeout(function(){
-			loadSong('backroom.mp3');
-			playSong();
+			
 			$('.background_board').css({
 				'background-image': 'url("./img/cg/with_old_knight.png")',
 				'background-size': 'cover',

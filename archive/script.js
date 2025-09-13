@@ -38,7 +38,17 @@ function getscene(archive_num){
         scenename='酒馆';
     else if(now_phase=='gem_room')
         scenename='密室';
-   
+    else if(now_phase=='na_street')
+        scenename='纳安城';
+    else if(now_phase=='na_street_01')
+        scenename='纳安城';
+    else if(now_phase=='na_street_02')
+        scenename='纳安城';
+    else if(now_phase=='na_street_03')
+        scenename='纳安城';
+    else if(now_phase=='lab')
+        scenename='实验室';
+
     return scenename;
 }
 

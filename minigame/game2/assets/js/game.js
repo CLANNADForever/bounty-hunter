@@ -91,6 +91,11 @@ let gameLoaded = false;
 let loadedImages = 0;
 const totalImages = 19;
 
+// 时间管理变量
+let lastTime = 0;
+const TARGET_FPS = 120;
+const FRAME_TIME = 1000 / TARGET_FPS; // 每帧目标时间（毫秒）
+
 // 图片加载完成事件
 for (const key in images) {
   const image = images[key];
@@ -135,12 +140,12 @@ let screenFlashAlpha = 0; // 新增：屏幕闪红效果
 
 // ===== 玩家 =====
 let player = {
-  x: TILE_SIZE*1.5,
-  y: TILE_SIZE*1.5,
+  x: TILE_SIZE*1.3,
+  y: TILE_SIZE*1.3,
   size: TILE_SIZE*0.8,
   color: 'yellow',
-  speed: 2,
-  health: 2,
+  speed: 240, // 像素/秒 (原来2像素/帧 * 120fps)
+  health: 3,
   attacking: false,
   direction: 'down',
   attackDir: null,
@@ -168,7 +173,7 @@ function spawnEnemy(spawnPoint, patrolPath){
     size: TILE_SIZE*0.8,
     alive: true,
     health: 2,
-    speed: 1.5, // 平滑移动
+    speed: 180, // 像素/秒 (原来1.5像素/帧 * 120fps)
     patrolPath: patrolPath,
     patrolStep: 0,
     patrolProgress: 0,
@@ -265,26 +270,27 @@ function isExit(x, y) {
 }
 
 // ===== 玩家更新 =====
-function updatePlayer(){
+function updatePlayer(deltaTime){
   // 如果游戏已结束，不再更新玩家
   if (gameState.isGameOver) return;
   
   let dx=0,dy=0;
+  const moveSpeed = player.speed * deltaTime; // 基于时间的移动距离
 
   if(keys['w']) {
-    dy-=player.speed;
+    dy-=moveSpeed;
     player.direction = 'up';
   }
   if(keys['s']) {
-    dy+=player.speed;
+    dy+=moveSpeed;
     player.direction = 'down';
   }
   if(keys['a']) {
-    dx-=player.speed;
+    dx-=moveSpeed;
     player.direction = 'left';
   }
   if(keys['d']) {
-    dx+=player.speed;
+    dx+=moveSpeed;
     player.direction = 'right';
   }
 
@@ -414,7 +420,7 @@ function attack(dir){
 
 
 
-function updateEnemies(){
+function updateEnemies(deltaTime){
   if (gameState.isGameOver) return;
 
   enemies.forEach(e=>{
@@ -423,8 +429,9 @@ function updateEnemies(){
     // ===== 巡逻移动 =====
     if(e.patrolPath && e.patrolPath.length > 0){
       let step = e.patrolPath[e.patrolStep];
-      let moveX = step.dx * e.speed;
-      let moveY = step.dy * e.speed;
+      const enemyMoveSpeed = e.speed * deltaTime; // 基于时间的移动距离
+      let moveX = step.dx * enemyMoveSpeed;
+      let moveY = step.dy * enemyMoveSpeed;
 
       if (moveX > 0) e.direction = 'right';
       else if (moveX < 0) e.direction = 'left';
@@ -441,7 +448,7 @@ function updateEnemies(){
         e.y = newY;
       }
 
-      e.patrolProgress++;
+      e.patrolProgress += enemyMoveSpeed;
       if(e.patrolProgress >= step.steps){
         e.patrolProgress = 0;
         e.patrolStep = (e.patrolStep + 1) % e.patrolPath.length;
@@ -449,7 +456,7 @@ function updateEnemies(){
     }
 
     // ===== 攻击计时器 =====
-    e.attackTimer++;
+    e.attackTimer += deltaTime * TARGET_FPS; // 转换为帧数等效
     if(e.attackTimer >= e.attackInterval){
       const distanceToPlayer = Math.sqrt(
         Math.pow(player.x + player.size/2 - (e.x + e.size/2), 2) +
@@ -680,8 +687,8 @@ function draw(){
 
 function resetGame() {
   // 重置玩家
-  player.x = TILE_SIZE*1.5;
-  player.y = TILE_SIZE*1.5;
+  player.x = TILE_SIZE*1.3;
+  player.y = TILE_SIZE*1.3;
   player.health = 4;
   player.attacking = false;
   player.direction = 'down'; // 重置方向
@@ -707,7 +714,7 @@ document.addEventListener('keydown', e => {
 });
 
 // ===== 游戏循环 =====
-function gameLoop(){
+function gameLoop(currentTime){
   // 检查图片是否已加载完成
   if (!gameLoaded) {
     // 显示加载中提示
@@ -724,11 +731,23 @@ function gameLoop(){
     return;
   }
   
-  updatePlayer();
-  updateEnemies();
+  // 计算时间差
+  if (lastTime === 0) lastTime = currentTime;
+  const deltaTime = (currentTime - lastTime) / 1000; // 转换为秒
+  lastTime = currentTime;
+  
+  // 屏幕闪红效果减弱
+  if (screenFlashAlpha > 0) {
+    screenFlashAlpha -= deltaTime * 2; // 每秒减少2
+    if (screenFlashAlpha < 0) screenFlashAlpha = 0;
+  }
+  
+  updatePlayer(deltaTime);
+  updateEnemies(deltaTime);
   draw();
   requestAnimationFrame(gameLoop);
 }
 
 // 开始游戏
-gameLoop();
+lastTime = 0;
+requestAnimationFrame(gameLoop);

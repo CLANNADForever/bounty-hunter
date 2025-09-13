@@ -147,16 +147,16 @@ function interact(object){
 				break;
             }
             case 1:{
-                picture.innerHTML='<img src="./img/avatar/old_knight.png">';
-                title.innerHTML='韦斯';
-				texture.innerHTML='身手不错啊杰恩，但现在我们得快点离开莱茵城了，不然被德莱伯爵发现就麻烦了';
+                picture.innerHTML='';
+                title.innerHTML='';
+				texture.innerHTML='在你拿起宝石的瞬间，整个密室的地面开始轻微震动，墙壁上的符文闪烁起危险的红光。';
                 gem++;
                 break; 
             }
             case 2:{
-                picture.innerHTML=''; 
-                title.innerHTML='';
-				texture.innerHTML='(拿到宝石后，你们从密室逃脱)';
+                picture.innerHTML='<img src="./img/avatar/old_knight.png">'; 
+                title.innerHTML='韦斯';
+				texture.innerHTML='不好，是静默警报！我们已经被发现了，必须马上离开！';
                 gem++;
                 break;              
             }
@@ -166,6 +166,26 @@ function interact(object){
                 cg(1);
                 break;
 			}
+        }
+    }
+    else if(object == 'treasure'){
+        text.style.display='block';
+        switch(treasure){
+            case 0:{
+                picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（金币和珠宝堆积如山，在灯光下闪耀着贪婪的光芒。但你们眼下的目标只有一个。）';
+				treasure++;
+                obj='end';
+				break;
+            }
+            default:{
+                picture.innerHTML='';
+                title.innerHTML='';
+				texture.innerHTML='（金币和珠宝堆积如山，在灯光下闪耀着贪婪的光芒。但你们眼下的目标只有一个。）';
+                obj='end';
+                break; 
+            }
         }
     }
     else if(object=='record'){

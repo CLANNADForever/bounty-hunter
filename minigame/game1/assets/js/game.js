@@ -7,26 +7,33 @@ backgroundImg.src = "./assets/image/tavern_second_floor.png"; // 背景图
 document.querySelector('.click-disappear').addEventListener('click', function() {
   this.classList.add('active'); // 原本的消失效果
   gameRunning = true;           // 设置为运行状态
-  gameLoop();                   // 启动游戏循环
+  lastTime = performance.now(); // 初始化时间
+  requestAnimationFrame(gameLoop); // 启动游戏循环
 });
 
 let gameRunning = false;
 let screenFlashAlpha = 0; // 新增：屏幕闪红效果
-// 玩家 & 敌人属性
+
+// 时间管理变量
+let lastTime = 0;
+const targetFPS = 120;
+const targetFrameTime = 1000 / targetFPS; // 约8.33ms per frame
+
+// 玩家 & 敌人属性 (速度现在是每秒像素数)
 let player = { 
   x: 200, y: 300, width: 50, height: 80, 
-  health: 100, speed: 5, attacking: false, attackFrame: 0,
+  health: 100, speed: 300, attacking: false, attackFrame: 0, // 300 pixels per second
   jumping: false, vy: 0, facing: "right" 
 };
 let enemy  = { 
   x: 550, y: 300, width: 50, height: 80, 
-  health: 100, speed: 2, attacking: false, attackFrame: 0,
+  health: 100, speed: 120, attacking: false, attackFrame: 0, // 120 pixels per second
   jumping: false, vy: 0, facing: "left",
-  attackCooldown: 500, // 1 second cooldown
+  attackCooldown: 400, // 1 second cooldown
   lastAttackTime: 0
 };
 
-const gravity = 0.6;
+const gravity = 1440; // pixels per second squared
 const ground = 300;
 
 // 按键状态
@@ -41,7 +48,7 @@ document.addEventListener("keydown", e => {
 
   if (e.key === " " && !player.jumping) {
     player.jumping = true;
-    player.vy = -12;
+    player.vy = -480; // 调整跳跃速度，每秒像素数
   }
 });
 document.addEventListener("keyup", e => keys[e.key] = false);
@@ -98,13 +105,13 @@ function drawEntity(entity, isPlayer) {
 
     if (entity.attackFrame === 6) {
       if (isPlayer && checkCollision(entity, enemy)) {
-        enemy.health = Math.max(0, enemy.health - 8);
+        enemy.health = Math.max(0, enemy.health - 7);
         const direction = player.facing === 'right' ? 1 : -1;
         enemy.x += direction * 25; // Knockback
         console.log("玩家击中敌人！敌人血量:", enemy.health);
       }
       if (!isPlayer && checkCollision(entity, player) && !player.jumping) {
-        player.health = Math.max(0, player.health - 14);
+        player.health = Math.max(0, player.health - 15);
         const direction = enemy.facing === 'right' ? 1 : -1;
         player.x += direction * 15; // Knockback
         screenFlashAlpha = 0.5; // 新增：触发闪红
@@ -123,19 +130,21 @@ function drawEntity(entity, isPlayer) {
 }
 
 // 更新玩家
-function updatePlayer() {
+function updatePlayer(deltaTime) {
+  const dt = deltaTime / 1000; // 转换为秒
+  
   if (keys["a"] && player.x > 0) {
-    player.x -= player.speed;
+    player.x -= player.speed * dt;
     player.facing = "left";
   }
   if (keys["d"] && player.x < canvas.width - player.width) {
-    player.x += player.speed;
+    player.x += player.speed * dt;
     player.facing = "right";
   }
 
   if (player.jumping) {
-    player.y += player.vy;
-    player.vy += gravity;
+    player.y += player.vy * dt;
+    player.vy += gravity * dt;
     if (player.y >= ground) {
       player.y = ground;
       player.jumping = false;
@@ -144,27 +153,28 @@ function updatePlayer() {
 }
 
 // 更新敌人AI
-function updateEnemy() {
+function updateEnemy(deltaTime) {
+  const dt = deltaTime / 1000; // 转换为秒
   let distance = Math.abs(player.x - enemy.x);
 
   if (distance > 45) {
     if (player.x < enemy.x) {
-      enemy.x -= enemy.speed;
+      enemy.x -= enemy.speed * dt;
       enemy.facing = "left";
     } else {
-      enemy.x += enemy.speed;
+      enemy.x += enemy.speed * dt;
       enemy.facing = "right";
     }
   }
 
   // if (!enemy.jumping && Math.random() < 0.005) {
   //   enemy.jumping = true;
-  //   enemy.vy = -10;
+  //   enemy.vy = -720; // 调整跳跃速度为每秒像素数
   // }
 
   if (enemy.jumping) {
-    enemy.y += enemy.vy;
-    enemy.vy += gravity;
+    enemy.y += enemy.vy * dt;
+    enemy.vy += gravity * dt;
     if (enemy.y >= ground) {
       enemy.y = ground;
       enemy.jumping = false;
@@ -191,14 +201,18 @@ function drawHealthBars() {
   ctx.strokeRect(560, 20, 200, 20);
 }
 
-function gameLoop() {
+function gameLoop(currentTime = 0) {
+  // 计算时间差
+  const deltaTime = currentTime - lastTime;
+  lastTime = currentTime;
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
 
   // 游戏运行时才更新逻辑
-  if (gameRunning) {
-    updatePlayer();
-    updateEnemy();
+  if (gameRunning && deltaTime > 0) {
+    updatePlayer(deltaTime);
+    updateEnemy(deltaTime);
   }
 
   // 无论是否运行，都绘制角色和血条
@@ -206,11 +220,11 @@ function gameLoop() {
   drawEntity(enemy, false);
   drawHealthBars();
 
-  // 新增：绘制屏幕闪红
+  // 新增：绘制屏幕闪红 (基于时间)
   if (screenFlashAlpha > 0) {
     ctx.fillStyle = `rgba(255, 0, 0, ${screenFlashAlpha})`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    screenFlashAlpha = Math.max(0, screenFlashAlpha - 0.05); // 逐渐减弱
+    screenFlashAlpha = Math.max(0, screenFlashAlpha - (deltaTime / 1000) * 3); // 3秒内消失
   }
 
   if (player.health <= 0) {
@@ -245,7 +259,8 @@ const totalImages = 4; // 背景图 + 玩家图 + 敌人图 + 武器图
 function imageLoaded() {
   imagesLoaded++;
   if (imagesLoaded === totalImages) {
-    gameLoop();
+    lastTime = performance.now(); // 初始化时间
+    requestAnimationFrame(gameLoop);
   }
 }
 

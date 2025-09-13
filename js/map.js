@@ -26,7 +26,7 @@ function checkObjectProximity() {
                 var distance = getDistance(heroX, heroY, objX, objY);
 
                 var highlightEl = $('#highlight-' + (i + 1));
-                if (distance < 50) { // 50px的接近阈值
+                if (distance < 70) { // 50px的接近阈值
                     highlightEl.css({
                         left: (objX-20) + 'px', // 调整以使高亮居中
                         top: (objY-20) + 'px'
@@ -249,6 +249,11 @@ function loadmap(phase){
 	}
 
 	else if(phase=='gem_room'){
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('backroom') || audio.paused)){
+			loadSong('backroom.mp3');
+			playSong();
+		}
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/gem_room.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; // 根据需要调整大小
@@ -266,7 +271,7 @@ function loadmap(phase){
 		}
 		
 		npc=[[550,525, 70,'old_knight_gem']]; 
-		object=[[480,200,80,'gem']];
+		object=[[480,200,80,'gem'], [454, 330, 50, 'treasure']];
 		// door=[[400,620,155,'bar']]; 
 		door=[];
 
@@ -274,6 +279,8 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/old_knight.png")');
 		$('#npc1').css('left','550px');
 		$('#npc1').css('top','525px'); 
+		$('#npc1').attr('data-orientation', 'left');
+
 		$('#npc2').css('display','none');
 		$('#npc3').css('display','none');
 		$('#npc4').css('display','none');
@@ -283,6 +290,11 @@ function loadmap(phase){
 	}
 
 	else if(phase=='na_street'){
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('sea') || audio.paused)){
+			loadSong('sea you and me.mp3');
+			playSong();
+		}
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/na_street.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; 
@@ -294,42 +306,74 @@ function loadmap(phase){
 			$('.hero').css('top','540px');
 			$('.hero').css('background-position-y','0');
 		}
+		if (init_dialog_at_naan==0){
+			person='init_dialog_at_naan';
+			dialog(person);
+		}
 
 		wallx = [[6,607,941],[873,402,74],[726,502,147],[548,404,178],[406,508,142],[277,412,129],[166,496,111],[6,411,160]];
 		wally = [[947,402,205],[873,402,100],[726,404,98],[548,404,104],[406,412,96],[277,412,84],[166,411,85],[6,411,196]];
 
-		npc=[[100,460,50,'old_knight_na_street']];
+		npc=[[900, 532, 50, 'old_knight_na_street'], [730, 486, 50, 'fisherman'], [290, 485 ,50, 'villager_04'] ,[562, 486 ,50 ,'villager_05']];
 		object=[];
 		door=[];
 
 		$('#npc1').css('display','block');
 		$('#npc1').css('background-image','url("./img/character/old_knight.png")');
-		$('#npc1').css('left','100px');
-		$('#npc1').css('top','460px');
-		$('#npc2').css('display','none');
-		$('#npc3').css('display','none');
-		$('#npc4').css('display','none');
+		$('#npc1').css('left','900px');
+		$('#npc1').css('top','532px');
+		$('#npc1').attr('data-orientation', 'left');
+
+
+		$('#npc2').css('display','block');
+		$('#npc2').css('background-image','url("./img/character/fisherman.png")');
+		$('#npc2').css('left','730px');
+		$('#npc2').css('top','486px');
+		$('#npc2').attr('data-orientation', 'down');
+
+		$('#npc3').css('display','block');
+		$('#npc3').css('background-image','url("./img/character/villager_04.png")');
+		$('#npc3').css('left','290px');
+		$('#npc3').css('top','485px');
+		$('#npc3').attr('data-orientation', 'down');
+
+		$('#npc4').css('display','block');
+		$('#npc4').css('background-image','url("./img/character/villager_05.png")');
+		$('#npc4').css('left','562px');
+		$('#npc4').css('top','486px');
+		$('#npc4').attr('data-orientation', 'down');
+
 		$('#npc5').css('display','none');
 		$('#npc6').css('display','none');
 	}
 
 	else if(phase=='na_street_01'){
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('sea') || audio.paused)){
+			loadSong('sea you and me.mp3');
+			playSong();
+		}
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/na_street.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; 
 		scene.style.backgroundRepeat = "no-repeat, repeat"; 
 		scene.style.backgroundPosition = "center, center";
 
+
 		if(true){
 			$('.hero').css('left','100px');
 			$('.hero').css('top','480px');
 			$('.hero').css('background-position-y','0');
 		}
+		if (init_dialog_at_naan_01==0){
+			person='init_dialog_at_naan_01';
+			dialog(person);
+		}
 
 		wallx = [[6,607,941],[873,402,74],[726,502,147],[548,404,178],[406,508,142],[277,412,129],[166,496,111],[6,411,160]];
 		wally = [[947,402,205],[873,402,100],[726,404,98],[548,404,104],[406,412,96],[277,412,84],[166,411,85],[6,411,196]];
 
-		npc=[[470,540,40,'resident_man'],[810,530,40,'resident_woman']];
+		npc=[[470,540,50,'resident_man'],[810,530,50,'resident_woman']];
 		object=[];
 		door=[];
 
@@ -338,10 +382,15 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/resident_man.png")');
 		$('#npc1').css('left','470px');
 		$('#npc1').css('top','540px'); 
+		$('#npc1').attr('data-orientation', 'down');
+
+
 		$('#npc2').css('display','block');
 		$('#npc2').css('background-image','url("./img/character/resident_woman.png")');
 		$('#npc2').css('left','810px');
 		$('#npc2').css('top','530px'); 
+		$('#npc2').attr('data-orientation', 'down');
+
 		$('#npc3').css('display','none');
 		$('#npc4').css('display','none');
 		$('#npc5').css('display','none');
@@ -349,6 +398,11 @@ function loadmap(phase){
 
 	}
 	else if(phase=='na_street_02'){
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('gate') || audio.paused)){
+			loadSong('gate of steiner.mp3');
+			playSong();
+		}
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/na_street.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; 
@@ -359,7 +413,6 @@ function loadmap(phase){
 			$('.hero').css('left','20px');
 			$('.hero').css('top','540px');
 			$('.hero').css('background-position-y','0');
-
 		}
 
 		if(newspaper_boy === 0) {
@@ -370,7 +423,7 @@ function loadmap(phase){
 		wallx = [[6,607,941],[873,402,74],[726,502,147],[548,404,178],[406,508,142],[277,412,129],[166,496,111],[6,411,160]];
 		wally = [[947,402,205],[873,402,100],[726,404,98],[548,404,104],[406,412,96],[277,412,84],[166,411,85],[6,411,196]];
 
-		npc=[[60,470,40,'newspaper_boy'],[300,540,40,'vina']];
+		npc=[[60,470,50,'newspaper_boy'],[300,540,50,'vina']];
 		object=[];
 		door=[];
 
@@ -379,10 +432,14 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/newspaper_boy.png")');
 		$('#npc1').css('left','60px');
 		$('#npc1').css('top','470px'); 
+		$('#npc1').attr('data-orientation', 'down');
+
 		$('#npc2').css('display','block');
 		$('#npc2').css('background-image','url("./img/character/vina.png")');
 		$('#npc2').css('left','300px');
-		$('#npc2').css('top','540px');
+		$('#npc2').css('top','540px'); 
+		$('#npc2').attr('data-orientation', 'left');
+
 		$('#npc3').css('display','none');
 		$('#npc4').css('display','none');
 		$('#npc5').css('display','none');
@@ -391,6 +448,11 @@ function loadmap(phase){
 	}
 	else if(phase=='na_street_03'){
 		$('.hero').css('display','block');
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('gate') || audio.paused)){
+			loadSong('gate of steiner.mp3');
+			playSong();
+		}
 		scene.style.backgroundImage = "url(./img/map/na_street.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; 
 		scene.style.backgroundRepeat = "no-repeat, repeat"; 
@@ -403,9 +465,9 @@ function loadmap(phase){
 		}
 
 		wallx = [[6,607,941],[873,402,74],[726,502,147],[548,404,178],[406,508,142],[277,412,129],[166,496,111],[6,411,160]];
-		wally = [[947,402,205],[873,402,100],[726,404,98],[548,404,104],[406,412,96],[277,412,84],[166,411,85],[6,411,196]];
+		wally = [[947,402,205],[873,402,100],[726,404,98],[548,404,104],[406,412,96],[277,412,84],[166,411,85],[6,411,196],[438, 0, 800]];
 
-		npc=[[100,460, 40, 'our_three'],[50,460, 40, 'our_three'],[150,460, 40, 'our_three']];
+		npc=[[100,460, 50, 'our_three'],[50,460, 50, 'our_three'],[150,460, 50, 'our_three']];
 		object=[];
 		door=[];
 
@@ -414,14 +476,20 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/old_woman.png")');
 		$('#npc1').css('left','50px');
 		$('#npc1').css('top','460px');
+		$('#npc1').attr('data-orientation', 'down');
+
 		$('#npc2').css('display','block');
 		$('#npc2').css('background-image','url("./img/character/young_man.png")');
 		$('#npc2').css('left','100px');
 		$('#npc2').css('top','460px');
+		$('#npc2').attr('data-orientation', 'right');
+
 		$('#npc3').css('display','block');
 		$('#npc3').css('background-image','url("./img/character/vina.png")');
 		$('#npc3').css('left','150px');
 		$('#npc3').css('top','460px');
+		$('#npc3').attr('data-orientation', 'left');
+
 		$('#npc4').css('display','none');
 		$('#npc5').css('display','none');
 		$('#npc6').css('display','none');
@@ -429,6 +497,11 @@ function loadmap(phase){
 	}
 	else if(phase=='lab'){
 		$('.hero').css('display','block');
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('gate') || audio.paused)){
+			loadSong('gate of steiner.mp3');
+			playSong();
+		}
 		scene.style.backgroundImage = "url(./img/map/lab.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; // 根据需要调整大小
 		scene.style.backgroundRepeat = "no-repeat, repeat"; // 防止图片重复
@@ -444,8 +517,8 @@ function loadmap(phase){
 			$('.hero').css('background-position-y','0'); // 将背景图片居中显示
 		}
 		
-		npc=[[440,370,40,'vina_log'],[490,350,40,'vina_log']]; 
-		object=[[560,360,40,'record']]; 
+		npc=[[440,370,50,'vina_log'],[490,350,50,'vina_log']]; 
+		object=[[560,360,50,'record']]; 
 		door=[];
 
 		$('#npc1').css('display','block');
@@ -461,6 +534,11 @@ function loadmap(phase){
 	}
 
 	else if(phase=='lab2'){
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('gate') || audio.paused)){
+			loadSong('gate of steiner.mp3');
+			playSong();
+		}
 		$('.hero').css('display','block');
 		scene.style.backgroundImage = "url(./img/map/lab.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; // 根据需要调整大小

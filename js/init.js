@@ -63,11 +63,17 @@ var mercenary_02=0;
 
 // gem_room
 var old_knight_gem=0;
-var gem=0;
+var gem=0;	
+var treasure=0;
 //na_street
+var init_dialog_at_naan=0;
 var old_knight_na_street=0;
+var fisherman=0;
+var villager_04=0;
+var villager_05=0;
 
 //na_street_01
+var init_dialog_at_naan_01=0;
 var resident_man=0;
 var resident_woman=0;
 

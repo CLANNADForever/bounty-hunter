@@ -47,13 +47,7 @@ function end(id){
 
 		// --- Scene 1: Text ---
 		setTimeout(function(){
-			$('.background_board').css({
-				'background-image': 'url(./img/end/end2.png)',
-				'background-size': 'cover',
-				'background-position': 'center',
-				'background-repeat': 'no-repeat'
-			}).fadeIn(1000);
-			$('.caption').html('由于没有密室的地图，你在寻找钥匙时，被闻讯赶来的卫兵团团围住。你寡不敌众...').fadeIn(1000);
+			$('.caption').html('你失去了唯一的线索。莱茵城不再欢迎你，而关于纳安城的传说，也终将与你无关。').fadeIn(1000);
 		}, 2000);
 
 		// --- Hide Text 1 ---
@@ -63,25 +57,32 @@ function end(id){
 
 		// --- Scene 2: Ending Title ---
 		setTimeout(function(){
-			$('.caption').html('达成结局：中道崩殂').fadeIn(1000);
+			$('.caption').html('你再次变回了那个漫无目的、不知归处的赏金猎人。').fadeIn(1000);
 		}, 7500);
 
 		// --- Fade Out ---
 		setTimeout(function(){
 			$('.caption').fadeOut(1000);
-			$('.background_board').fadeOut(1000);
 		}, 10000);
+
+		setTimeout(function(){
+			$('.caption').html('达成结局: 被驱逐者').fadeIn(1000);
+		}, 11500);
+
+		setTimeout(function(){
+			$('.caption').fadeOut(1000);
+		}, 14000);
 		
 		// --- Cleanup & Redirect ---
 		setTimeout(function(){
 			$('#cg-container').hide();
 			$('.curtain').hide();
 			window.location.href = './home/home.html';
-		}, 11500);
+		}, 15500);
 		// 为音乐播放器发送消息
 		setTimeout(function(){
 			window.parent.postMessage('showMusicPlayer', '*')
-		}, 11400);
+		}, 15400);
 	}
 	else if(id==3){
 		$('.background_board').css('display','none');
@@ -89,12 +90,6 @@ function end(id){
 		$('.curtain').css('display','block');
 
 		setTimeout(function(){
-			$('.background_board').css({
-				'background-size': 'cover', // 使背景图片铺满窗口
-				'background-position': 'center', // 使背景图片居中
-				'background-repeat': 'no-repeat' // 防止背景图片重复
-			});
-			$('.background_board').fadeIn(1000);
 			$('.caption').html('达成结局：幻想乌托邦');
 			$('.caption').fadeIn(1000);
 		},2000);
@@ -103,6 +98,9 @@ function end(id){
 		setTimeout(function(){
 			window.location.href = './home/home.html';
 		},7000);
+		setTimeout(function(){
+			window.parent.postMessage('showMusicPlayer', '*')
+		}, 6900);
 	}
 	else if(id==4){
 		$('.background_board').css('display','none');

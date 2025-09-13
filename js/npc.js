@@ -387,7 +387,7 @@ function dialog(man){
 			case 8:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='（即将进入与韦斯的战斗）';
+				texture.innerHTML='（与老骑士韦斯战斗！）';
 				loadSong('game1.mp3');
 				playSong();
 				old_knight++;
@@ -398,7 +398,7 @@ function dialog(man){
 				title.innerHTML='';
 				texture.innerHTML='(战斗结束了)';
 				$('.game1').css('display','block');
-				old_knight++; // HACK 很变态的写法，为了退出能直接赢，而如果你玩了游戏，结束后会设置值，这个++就无所谓了
+				// old_knight++; // HACK 很变态的写法，为了退出能直接赢，而如果你玩了游戏，结束后会设置值，这个++就无所谓了
 				break;
 			}
 			case 10:{
@@ -573,21 +573,168 @@ function dialog(man){
 			}
 		}
 	}
+	else if (man=='init_dialog_at_naan'){
+		text.style.display='block';
+		switch(init_dialog_at_naan){
+			case 0:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='你们的船靠岸了。这就是传说中的纳安城——人群熙熙攘攘，街道两侧商品琳琅满目，空气中却闻不到一丝海风的咸味。';
+				init_dialog_at_naan++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
+				title.innerHTML='韦斯';
+				texture.innerHTML='杰恩...你看到了吗？这里...这里比传说中还要美好!';
+				init_dialog_at_naan++;
+				person='end';
+				break;
+			}
+		}
+	}
+	else if (man=='villager_04'){
+		villager_05=2;
+		text.style.display='block';
+		switch(villager_04){
+			case 0:{
+				picture.innerHTML='<img src="./img/avatar/villager_04.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='你好，外乡人。今天天气真好。';
+				villager_04++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/villager_04.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='祝你在这里度过美好的一天。';
+				person='end';
+				break;
+			}
+			case 2:{
+				picture.innerHTML='<img src="./img/avatar/villager_04.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='你好，外乡人。今天天气真好。';
+				villager_04++;
+				break;
+			}
+			case 3:{
+				picture.innerHTML='<img src="./img/avatar/villager_04.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='祝你在这里度过美好的一天。';
+				villager_04++;
+				break;
+			}
+			case 4:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（嗯？）';
+				person='end';
+				villager_04=2;
+				break;
+			}
+		}
+	}
+	else if (man=='villager_05'){
+		villager_04=2;
+		text.style.display='block';
+		switch(villager_05){
+			case 0:{
+				picture.innerHTML='<img src="./img/avatar/villager_05.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='你好，外乡人。今天天气真好。';
+				villager_05++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/villager_05.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='祝你在这里度过美好的一天。';
+				villager_05++;
+				person='end';
+				break;
+			}
+			case 2:{
+				picture.innerHTML='<img src="./img/avatar/villager_05.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='你好，外乡人。今天天气真好。';
+				villager_05++;
+				break;
+			}
+			case 3:{
+				picture.innerHTML='<img src="./img/avatar/villager_05.png">';
+				title.innerHTML='居民';
+				texture.innerHTML='祝你在这里度过美好的一天。';
+				villager_05++;
+				break;
+			}
+			case 4:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（嗯？）';
+				person='end';
+				villager_05=2;
+				break;
+			}
+		}
+	}
+	
 
+	else if (man=='fisherman'){
+		text.style.display='block';
+		switch(fisherman){
+			case 0:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='一个鱼贩的摊位，上面摆满了...风干的蘑菇和内陆出产的香料。没有一条鱼。';
+				fisherman++;
+				break;
+			}
+			case 1:{
+				picture.innerHTML='<img src="./img/avatar/fisherman.png">';
+				title.innerHTML='“鱼”贩';
+				texture.innerHTML='新鲜的货物！先生，要来点高原上最好的蘑菇吗？';
+				fisherman++;
+				break;
+			}
+			case 2:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='这里不是卖鱼的摊位吗？';
+				fisherman++;
+				break;
+			}
+			case 3:{
+				picture.innerHTML='<img src="./img/avatar/fisherman.png">';
+				title.innerHTML='“鱼”贩';
+				texture.innerHTML='鱼？...鱼是什么？我一直都是卖蘑菇的啊。我的记性...一向很好。';
+				fisherman++;
+				person='end';
+				break;
+			}
+			default:{
+				picture.innerHTML='<img src="./img/avatar/fisherman.png">';
+				title.innerHTML='“鱼”贩';
+				texture.innerHTML='鱼？...鱼是什么？我一直都是卖蘑菇的啊。我的记性...一向很好。';
+				person='end';
+				break;
+			}
+		}
+	}
 	else if (man=='old_knight_na_street'){
 		text.style.display='block';
 		switch(old_knight_na_street){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
 				title.innerHTML='韦斯';
-				texture.innerHTML='哦杰恩，这个地方看上去真的美好极了！我要在这个地方定居了。';
+				texture.innerHTML='杰恩，这里真的太美好了，我要留在这里，你呢？';
 				old_knight_na_street++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
 				title.innerHTML='韦斯';
-				texture.innerHTML='你呢杰恩？还要去做你的委托吗？你都有那么多酬金了，为什么不和我留在这里享受生活的乐趣？';
+				texture.innerHTML='还要去做你的委托吗？你都有那么多酬金了，为什么不和我留在这里享受生活的乐趣？';
 				old_knight_na_street++;
 				break;
 			}
@@ -596,24 +743,24 @@ function dialog(man){
 				// 这里应该不用做处理，即使再E，也会来到case4，只是重复设置这些元素而已，不会跳出（因为没++）
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='要放弃委托，和韦斯一起留在纳安城吗？（你的选择会影响到你的未来）';
+				texture.innerHTML='......';
 				choice_zone.style.display='block';
-				choice1.innerHTML='同意';
-				choice2.innerHTML='拒绝';
+				choice1.innerHTML='我也留下';
+				choice2.innerHTML='我得继续任务';
 				// 这里不应该++，否则不点按钮，e一下就过去了
 				break;
 			}
 			case 3:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
 				title.innerHTML='韦斯';
-				texture.innerHTML='很聪明的决定，走吧，我看到了一家看起来很不错的酒馆，为我们的新生活喝一杯';
+				texture.innerHTML='很聪明的决定。走吧，我看到了一家看起来很不错的酒馆，为我们的新生活喝一杯!';
 				old_knight_na_street++;
 				break;
 			}
 			case 4:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='在纳安城的生活美好而虚无，这里的人们过着固定规律节奏的生活，时间长了，你与韦斯逐渐被这里同化，渐渐遗忘了你们的过去.......';
+				texture.innerHTML='在纳安城的生活美好而虚无，这里的人们过着固定规律节奏的生活，时间长了，你与韦斯逐渐被这里同化，渐渐遗忘了你们的过去......';
 				pauseSong();
 				addachievement(4);
 				old_knight_na_street++;
@@ -649,8 +796,8 @@ function dialog(man){
 			}
 			case 13:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩（收下骑士勋章）';
-				texture.innerHTML='我会的，等我完成这份委托我就回来找你';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（收下骑士勋章）我会的，等我完成这份委托我就回来找你';
 				old_knight_na_street++;
 				addachievement(5);
 				break;
@@ -664,20 +811,33 @@ function dialog(man){
 			}
 		}
 	}
+	else if (man=='init_dialog_at_naan_01'){
+		text.style.display='block';
+		switch(init_dialog_at_naan_01){
+			case 0:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='韦斯...希望他在这里能找到安宁。现在，该办正事了。';
+				init_dialog_at_naan_01++;
+				person='end';
+				break;
+			}
+		}
+	}
 	else if (man=='resident_man'){
 		text.style.display='block';
 		switch(resident_man){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩（把信件和地图展示给男居民）';
-				texture.innerHTML='打扰一下，你见过这个人吗？';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（把信件和地图展示给男居民）打扰一下，你听说过这个人吗？';
 				resident_man++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/resident_man.png">';
 				title.innerHTML='男居民';
-				texture.innerHTML='没见过，他是纳安城的人吗';
+				texture.innerHTML='...不认识。城里所有人的面孔，我都记得。';
 				resident_man++;
 				person='end';
 				break;
@@ -685,7 +845,7 @@ function dialog(man){
 			case 2:{
 				picture.innerHTML='<img src="./img/avatar/resident_man.png">';
 				title.innerHTML='男居民';
-				texture.innerHTML='我从没听说过这个人，或许你应该去其他地方找';
+				texture.innerHTML='找人？你不是在找人，你是在找你自己。';
 				resident_man++;
 				person='end';
 				break;
@@ -693,7 +853,7 @@ function dialog(man){
 			default:{
 				picture.innerHTML='<img src="./img/avatar/resident_man.png">';
 				title.innerHTML='男居民';
-				texture.innerHTML='你问我去哪儿找？我也不知道，我只知道这片街区';
+				texture.innerHTML='如果你想找人，或许应该去城里最高的地方看看，那里视野好。';
 				if(resident_woman === 0 || resident_man === 3){
 					resident_man++;
 					person='end';
@@ -714,15 +874,15 @@ function dialog(man){
 		switch(resident_woman){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩（把信件和地图展示给女居民）';
-				texture.innerHTML='请问你见过这个人吗';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（把信件和地图展示给女居民）请问你见过这个人吗';
 				resident_woman++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/resident_woman.png">';
 				title.innerHTML='女居民';
-				texture.innerHTML='或许见过吧，不过我不记得了';
+				texture.innerHTML='或许见过吧，不过我不记得了。到底见过没有？我不知道，我并不记得太多的事情';
 				resident_woman++;
 				person='end';
 				break;
@@ -730,7 +890,7 @@ function dialog(man){
 			default:{
 				picture.innerHTML='<img src="./img/avatar/resident_woman.png">';
 				title.innerHTML='女居民';
-				texture.innerHTML='到底见过没有？我不知道，我并不记得太多的事情';
+				texture.innerHTML='如果你想找人，或许应该去城里最高的地方看看。';
 				if(resident_man === 0 || resident_woman === 2){
 					resident_woman++;
 					person='end';
@@ -792,7 +952,7 @@ function dialog(man){
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
-				texture.innerHTML='哦这位先生，我觉得我可能见过你，你很眼熟，不过抱歉我不记得你是谁了。';
+				texture.innerHTML='这位先生，我觉得我可能见过你，你很眼熟，不过抱歉我不记得你是谁了。';
 				vina++;
 				break;
 			}
@@ -809,26 +969,36 @@ function dialog(man){
 				texture.innerHTML='我叫维娜，杰恩先生，你这是要去做什么吗？';
 				vina++;
 				break;
-			}case 4:{
+			}
+			case 4:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩（将信件和地图展示给维娜）';
-				texture.innerHTML='我接了一份委托，要找一个人';
+				title.innerHTML='杰恩';
+				texture.innerHTML='（将信件和地图展示给维娜）我接了一份委托，要找一个人';
 				vina++;
 				break;
-			}case 5:{
+			}
+			case 5:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
 				texture.innerHTML='人在纳安城？很不幸的是我不认识这个人，但我想我可以和你一起找';
 				vina++;
 				break;
-			}case 6:{
-				picture.innerHTML='<img src="./img/avatar/jane.png">';
-				title.innerHTML='杰恩';
-				texture.innerHTML='哦那真是再好不过了。';
+			}
+			case 6:{
+				picture.innerHTML='<img src="./img/avatar/vina.png">';
+				title.innerHTML='维娜';
+				texture.innerHTML='但...不知为何，我感觉你的事对我很重要。如果不介意的话，我想我可以和你一起找。';
 				vina++;
 				break;
 			}
 			case 7:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='那真是再好不过了。';
+				vina++;
+				break;
+			}
+			case 8:{
 				text.style.display='none';
 				person='none';
 				transform('na_street_03');
@@ -877,7 +1047,7 @@ function dialog(man){
 			case 5:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='维娜，我想我们该去实验室看看';
+				texture.innerHTML='维娜，我想我们该去实验室看看。';
 				our_three++;
 				break;
 			}
@@ -986,20 +1156,20 @@ function dialog(man){
 			}case 5:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
-				texture.innerHTML='但是我对这件事真的一点印象都没有';
+				texture.innerHTML='但是我对这件事真的一点印象都没有。';
 				vina_log++;
 				break;
 			}case 6:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
-				texture.innerHTML='而且在你来这里之前，我从没听说过实验室';
+				texture.innerHTML='而且在你来这里之前，我从没听说过实验室。';
 				vina_log++;
 				break;
 			}
 			case 7:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='这真是一件奇怪的事';
+				texture.innerHTML='这真是一件奇怪的事。';
 				vina_log++;
 				break;
 			}case 8:{
@@ -1040,7 +1210,7 @@ function dialog(man){
 			default:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
-				texture.innerHTML='杰恩你找到线索了吗？我这里什么都没有';
+				texture.innerHTML='你找到线索了吗？我这里什么都没有。';
 				person='end';
 				break;
 			}
@@ -1234,7 +1404,20 @@ function dialog(man){
 				$('.choice_zone').css('display','none'); 
 				break;
 			}
-
+			case 6:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='这边只有他们两个人，还是再问问吧。';
+				person='end';
+				break;
+			}
+			case 7:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='老婆婆看起来知道些什么，还是再问问吧。';
+				person='end';
+				break;
+			}
 		}
 	}
 }
@@ -1374,6 +1557,34 @@ var tim4=setInterval(function(){ // 家里提示
 		dialog(person);
 	} else if (!inGuideZone) {
 		guideTriggered4 = false; // Unlock when player leaves the zone
+	}
+},50);
+
+let guideTriggered5 = false;
+var tim5=setInterval(function(){ // 家里提示
+	const inGuideZone = now_phase == 'na_street_01' && dis(hero.offsetLeft, hero.offsetTop, 953, 531) <= 100;
+
+	if (inGuideZone && !guideTriggered5 && person === 'none') {
+		guideTriggered5 = true; // Lock
+		person='self';
+		self = 6;
+		dialog(person);
+	} else if (!inGuideZone) {
+		guideTriggered5 = false; // Unlock when player leaves the zone
+	}
+},50);
+
+let guideTriggered6 = false;
+var tim5=setInterval(function(){ // 家里提示
+	const inGuideZone = now_phase == 'na_street_03' && dis(hero.offsetLeft, hero.offsetTop,253, 559) <= 100;
+
+	if (inGuideZone && !guideTriggered6 && person === 'none') {
+		guideTriggered6 = true; // Lock
+		person='self';
+		self = 7;
+		dialog(person);
+	} else if (!inGuideZone) {
+		guideTriggered6 = false; // Unlock when player leaves the zone
 	}
 },50);
 
