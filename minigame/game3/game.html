@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undertale 战斗小游戏</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- 右上角重置按钮 -->
+    <button id="reset-btn" style="position:fixed;top:16px;right:24px;z-index:9999;padding:8px 18px;font-size:16px;">重置</button>
+    <div id="game-container">
+        <div id="start-screen">
+            <p> WASD 或 方向键 移动躲避</p>
+            <p>E 或 空格 推进对话</p>
+            <p style="font-size: 1.2em;margin-bottom: 0;">如果被重力攻击持续影响</p>
+            <p style="font-size: 1.2em;margin-top: 0;">尝试向相同方向移动来挣脱</p>
+            <p>点击进入最终决战</p>
+        </div>
+        <!-- Game elements start hidden and are shown by script -->
+        <div id="enemy-area" class="hidden">
+            <div id="enemy"></div>
+        </div>
+        <div id="battle-box" class="hidden">
+            <div id="player"></div>
+        </div>
+        <div id="dialogue-box" class="hidden">
+            <p id="dialogue-text"></p>
+        </div>
+        <div id="hud" class="hidden">
+            
+        </div>
+    </div>
+    <script src="assets/script.js"></script>
+    <script>
+    // 绑定重置按钮
+    document.getElementById('reset-btn').onclick = function() {
+        if(window.resetGame) window.resetGame();
+    };
+    </script>
+</body>
+</html>

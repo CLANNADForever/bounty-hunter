@@ -192,16 +192,16 @@ function interact(object){
         text.style.display='block';
         switch(record){ 
             case 0:{
-                picture.innerHTML='<img src="./img/avatar/jane.png">';
-                title.innerHTML='杰恩';
-				texture.innerHTML='这里有一个录像带';
+                picture.innerHTML='';  
+                title.innerHTML='';
+				texture.innerHTML='你们走到一台布满灰尘的核心终端前。屏幕突然亮起，显示出一行字..';
                 record++;
                 break;
             }
             default:{
                 person='none';
                 text.style.display='none';
-                transform('lab2');
+                cg(8);
                 break;
             }
         }

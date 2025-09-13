@@ -54,7 +54,9 @@ function skipCurrentCg(cgId) {
 	else if(cgId === 7){
 		$('.game2').css('display','block');
 	}
-	
+	else if(cgId === 8){
+		transform('lab2');
+	}
 }
 
 function cg(id){
@@ -265,8 +267,8 @@ function cg(id){
 		cgTimeouts.push(setTimeout(function(){
 			$('.caption').html('你与来自过去的自己合作，将掠夺者驱逐回他们的时空，并将他们封锁在那个时空，防止他们再去掠夺其他低科技水平时空的资源，这场跨越时空的灾难，落下帷幕'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			loadSong('sea you and me.mp3');
-			playSong();
+			// loadSong('sea you and me.mp3');
+			// playSong();
 		},1000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
 		cgTimeouts.push(setTimeout(function(){
@@ -298,8 +300,8 @@ function cg(id){
 		cgTimeouts.push(setTimeout(function(){
 			$('.caption').html('你成为了高科技水平时空的一员，在他们的帮助下，你实现了很多自己曾经设想过但是没有机会实现的研究，名誉双收，而低科技水平时空沦为养料，在资源被榨干后分崩离析，从时间的长河里陨落。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			loadSong('sea you and me.mp3');
-			playSong();
+			// loadSong('sea you and me.mp3');
+			// playSong();
 		},1000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
 		
@@ -329,8 +331,8 @@ function cg(id){
 		cgTimeouts.push(setTimeout(function(){
 			$('.caption').html('你留在了你的故土，时光机被彻底关闭，你和维娜重新做回了实验室的研究员，和昔日同事们开启了新的研究项目。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			loadSong('sea you and me.mp3');
-			playSong();
+			// loadSong('sea you and me.mp3');
+			// playSong();
 		},1000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",7000)); // 6秒后文字用0.5秒淡出
 		cgTimeouts.push(setTimeout(function(){
@@ -347,9 +349,9 @@ function cg(id){
 		cgTimeouts.push(setTimeout(function(){
 			addachievement(7);
 			end(6);
-			$('#skipCgButton').hide(); // CG结束后隐藏按钮
-            $('.curtain').hide();
-            $('#cg-container').hide();
+			// $('#skipCgButton').hide(); // CG结束后隐藏按钮
+            // $('.curtain').hide();
+            // $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
 		},19000));
 	}
@@ -366,14 +368,14 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你与来自过去的自己合作，将掠夺者驱逐回他们的时空，并将他们封锁在那个时空，防止他们再去掠夺其他低科技水平时空的资源，这场跨越时空的灾难，落下帷幕'); 
+			$('.caption').html('你握紧了那枚骑士勋章，韦斯的固执与梦想仿佛还留有余温。<br>过去是什么？你曾苦苦追寻。<br>而现在你明白，那些在旅途中遇到的面孔，那些举杯共饮的夜晚，同样是你的一部分。<br>维娜的祝福声中，你再次踏入了时空的洪流。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			loadSong('sea you and me.mp3');
-			playSong();
+			// loadSong('sea you and me.mp3');
+			// playSong();
 		},1000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('尘埃落定后，那些丢失的记忆被归还于每个人，遭受重创的纳安城开始慢慢恢复，经讨论后，时光机项目被暂时终止，在时光机彻底关闭前，来自过去的杰恩回到了过去，现在，轮到你做选择了。'); 
+			$('.caption').html('回归故地。纳安城不再是虚假的乌托邦，变回了一个普通的海滨小镇。<br>酒馆里，韦斯正高举酒杯，吹嘘着早已过时的骑士传奇。<br>他看到你，露出了一个得意的笑容。<br>你走上前，将一枚金币放在桌上。<br>“老板，两杯最好的麦酒。”<br>窗外，新的冒险正等待着你。而这一次，你不再孤单。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
 		},10000));
 		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",18000)); // 8秒后文字用0.5秒淡出
@@ -381,9 +383,9 @@ function cg(id){
 		cgTimeouts.push(setTimeout(function(){
             addachievement(8);
 			end(7);
-			$('#skipCgButton').hide(); // CG结束后隐藏按钮
-            $('.curtain').hide();
-            $('#cg-container').hide();
+			// $('#skipCgButton').hide(); // CG结束后隐藏按钮
+            // $('.curtain').hide();
+            // $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
 		},19000));
 	}
@@ -421,5 +423,205 @@ function cg(id){
 			$('.game2').css('display','block');
 		},6900));
 		
+	}
+	else if(id==8){
+		$('.background_board').css('display','none'); // 背景板隐藏
+		$('.caption').css('display','none'); // 字幕隐藏
+		$('.curtain').css('display','block'); // 幕布显示
+        $('#cg-container').css('display', 'flex');
+		
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('致归来者：杰恩').fadeIn(1000);
+			loadSong('fair.mp3');
+			playSong();
+		},1000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},4000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('———来自过去的你').fadeIn(1000);
+		},5000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},8000));
+
+		// 第一幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final1.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('这是你...原本的样子。').fadeIn(1000);
+		},9000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},14000));
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('你曾是一个最顶尖的科学家，坚信能触及时间的边界。').fadeIn(1000);
+		},16000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},21000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('你成功了...也因此打开了地狱的大门。').fadeIn(1000);
+		},23000));
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').fadeOut(500);
+			$('.caption').fadeOut(500);
+		},28000));
+
+		// 第二幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final2.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('你的实验失控了，连接了两个不该触碰的时空。').fadeIn(1000);
+		},30000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},35000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('一个来自过去，一个...来自未来。').fadeIn(1000);
+		},37000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},42000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('我和你，还有他。三个时空的我们，在那一刻相遇。').fadeIn(1000);
+		},44000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').fadeOut(500);
+			$('.caption').fadeOut(500);
+		},49000));
+
+		// 第三幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final3.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('他的世界早已枯竭，而我们的世界，在他的眼中，不过是一个丰饶的“猎场”。').fadeIn(1000);
+		},51000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},56000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('他称之为“为了文明的延续”。').fadeIn(1000);
+		},58000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},63000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('而我，称之为“掠夺”。').fadeIn(1000);
+		},65000));
+		cgTimeouts.push(setTimeout(function(){
+			$('background_board').fadeOut(500);
+			$('.caption').fadeOut(500);
+		},70000));
+
+		// 第四幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final4.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('为了让我们“闭嘴”，他启动了记忆覆盖装置。').fadeIn(1000);
+		},72000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},76000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('他们的技术，我们根本无法理解。整座纳安城，都成了他的实验室。').fadeIn(1000);
+		},78000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},83000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('所有人的记忆都被抹去、重写...变成听话的、日复一日的“幸福”居民。').fadeIn(1000);
+		},85000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').fadeOut(500);
+			$('.caption').fadeOut(500);
+		},90000));
+
+		// 第五幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final5.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('在最后的混乱中，我意识到，你是唯一的变数。').fadeIn(1000);
+		},92000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},97000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('我把你推向了未来，让你逃离了这场灾难。').fadeIn(1000);
+		},99000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},104000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('代价是，你的记忆在不稳定的时空通道中被撕碎。').fadeIn(1000);
+		},106000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},111000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('而我，则留在这里，戴上了被抹除记忆的面具，寻找反击的机会。').fadeIn(1000);
+		},113000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').fadeOut(500);
+			$('.caption').fadeOut(500);
+		},118000));
+
+		// 第六幕
+		cgTimeouts.push(setTimeout(function(){
+			$('.background_board').css({
+				'background-image': 'url("./img/cg/final6.png")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			}).fadeIn(1000);
+			$('.caption').html('那封信，是我给你的。').fadeIn(1000);
+		},120000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},126000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('那颗宝石钥匙，是我留下的路标。').fadeIn(1000);
+		},128000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},134000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('我引导你回来，因为只有你我联手，才能结束这一切。').fadeIn(1000);
+		},136000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},142000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('现在，你记起一切了吗...').fadeIn(1000);
+		},144000));
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').fadeOut(500);
+		},150000));
+		cgTimeouts.push(setTimeout(function(){
+			transform('lab2');
+		},152000));
+
 	}
 }

@@ -1,0 +1,172 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 640px;
+    height: 500px; /* 设置固定高度以确保开始界面可点击 */
+    text-align: center;
+    position: relative; /* 用于定位开始界面 */
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 100;
+    animation: blink 1.5s linear infinite;
+}
+
+#enemy-area {
+    height: 150px; 
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemy {
+    width: 160px;
+    height: 160px;
+    /* 移除 background-color 并替换为图片 */
+    /* background-image: url('imgs/jane_3.png'); */
+    background-color: #000;
+    background-size: cover; /* 使图片完全覆盖元素 */
+    background-position: 0 0; /* 将图片置于中心 */
+    background-repeat: no-repeat; /* 防止图片重复 */
+    border: 4px solid #000;
+    position: relative; 
+    transition: all 0.5s ease;
+}
+
+#hud {
+    width: 200px;
+    height: 20px;
+    border: 4px solid #fff;
+    margin: 20px auto 0;
+    padding: 4px;
+    display: flex;
+    gap: 4px;
+}
+
+.hp-segment {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.hp-segment.filled {
+    background-color: red;
+}
+
+#battle-box {
+    width: 200px;
+    height: 200px;
+    border: 4px solid #fff;
+    margin: 0 auto;
+    position: relative;
+    background-color: #000;
+    overflow: hidden; 
+}
+
+#player {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 90px;
+    left: 90px;
+    background-image: url('imgs/player.png');
+    background-color: #000;
+    background-size: cover;
+}
+
+.invincible {
+    animation: blink 0.15s linear infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+
+.bullet {
+    position: absolute;
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+}
+
+.laser-warning {
+    position: absolute;
+    background-color: rgba(255, 255, 0, 0.4);
+    z-index: 10;
+}
+
+.laser-beam {
+    position: absolute;
+    background-color: yellow;
+    box-shadow: 0 0 15px yellow;
+    z-index: 11;
+}
+
+.missile-warning {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px dashed #ff8a8a;
+    border-radius: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 10;
+}
+
+.missile-impact {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%); 
+    animation: fadeOut 0.3s forwards;
+    z-index: 11;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+
+#dialogue-box {
+    border: 4px solid #fff;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: left;
+    height: 150px;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+}
+
+.hidden {
+    display: none !important;
+}

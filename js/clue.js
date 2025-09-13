@@ -10,7 +10,7 @@ function addachievement(id){
 		$('#achieve').html('机智过人');
 	}
 	else if(id==4){
-		$('#achieve').html('遗失自我');
+		$('#achieve').html('遗失过往');
 	}
 	else if(id==5){
 		$('#achieve').html('守信的赏金猎人');

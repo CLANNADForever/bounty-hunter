@@ -761,18 +761,21 @@ function dialog(man){
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='在纳安城的生活美好而虚无，这里的人们过着固定规律节奏的生活，时间长了，你与韦斯逐渐被这里同化，渐渐遗忘了你们的过去......';
-				pauseSong();
+				person='none';
+				// pauseSong();
 				addachievement(4);
-				old_knight_na_street++;
-				break;
-			}
-			case 5:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='';
 				end(3);
+
+				// old_knight_na_street++;
 				break;
 			}
+			// case 5:{
+			// 	picture.innerHTML='';
+			// 	title.innerHTML='';
+			// 	texture.innerHTML='';
+				
+			// 	break;
+			// }
 			case 10:{
 				picture.innerHTML='<img src="./img/avatar/old_knight.png">';
 				title.innerHTML='韦斯';
@@ -1222,101 +1225,123 @@ function dialog(man){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='你就是我要找的委托对象？';
+				texture.innerHTML='信是你发的...委托人也是你？';
 				reveal++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
-				texture.innerHTML='是的，也是我给你下的委托。';
+				title.innerHTML='委托人';
+				texture.innerHTML='没错。我是你的过去，也是你的委托人。';
 				reveal++;
 				break;
 			}
 			case 2:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
-				texture.innerHTML='如你所见，他们的科技比我们发达，已经修复了时光机';
+				title.innerHTML='委托人';
+				texture.innerHTML='如你所见，‘未来’已经降临。他们的科技远超我们，时光机也已被修复。';
 				reveal++;
 				break;
 			}
 			case 3:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
-				texture.innerHTML='这个时空的资源已经快被榨干了，他们这群掠夺者将目光投向了其他科技落后的时空';
+				title.innerHTML='委托人';
+				texture.innerHTML='这个世界...我们的故乡，就要被榨干了。现在，他们还准备将同样的命运，施加给无数个像我们一样‘落后’的时空。';
 				reveal++;
 				break;
 			}case 4:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
-				texture.innerHTML='而我已经找到了办法，只要你我联手，就能把他们这群掠夺者锁在他们的时空。';
+				title.innerHTML='委托人';
+				texture.innerHTML='但我找到了反击的办法。你...是我唯一的希望。只要我们联手，就能将这群掠夺者永远地锁回他们的牢笼！';
 				reveal++;
 				break;
 			}case 5:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
-				texture.innerHTML='怎么能叫掠夺者呢？';
+				title.innerHTML='入侵者';
+				texture.innerHTML='怎么能叫掠夺者呢？我们是‘园丁’。';
 				reveal++;
 				break;
 			}case 6:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
-				texture.innerHTML='这是为了文明的发展与留存做出的必要牺牲，';
+				title.innerHTML='入侵者';
+				texture.innerHTML='为了让更茁壮的火种燃烧，有时必须剪除枯枝。';
 				reveal++;
 				break;
 			}
 			case 7:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
-				texture.innerHTML='资源是有限的，总有火种要熄灭，才能让其他火种延续下去。';
+				title.innerHTML='入侵者';
+				texture.innerHTML='杰恩博士，别听这个失败者的煽动。你是一个追求真理的头脑，不应该被无聊的乡土情结束缚。';
 				reveal++;
 				break;
 			}case 8:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
-				texture.innerHTML='杰恩博士，你很聪明，如果愿意加入我们，我们会给你更好的一切。';
+				title.innerHTML='入侵者';
+				texture.innerHTML='加入我们。知识、力量、永恒...你曾渴望的一切，在这里，唾手可得。';
 				reveal++;
 				break;
 			}
 			case 9:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='要选择哪边（你的选择会影响到你的未来）';
+				texture.innerHTML='一边是守护故土的责任，一边是触及真理的诱惑。你的选择，将定义你是谁......';
 				choice_zone.style.display='block';
-				choice1.innerHTML='封锁掠夺者';
-				choice2.innerHTML='加入高科技时空阵营';
+				choice1.innerHTML='这是我的世界，我来守护。';
+				choice2.innerHTML='为了更伟大的进步，牺牲在所难免。';
 				// 这里不应该++，否则不点按钮，e一下就过去了
 				break;
 			}
 			case 100:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
-				texture.innerHTML='为什么？加入我们，你会得到更好的未来！那些高尖端科技或许是你们一生也无法企及的高度！';
+				title.innerHTML='入侵者';
+				texture.innerHTML='为什么？！愚蠢的情感！你们在拒绝进化，在拒绝一个能让你触及群星的未来！';
 				reveal++;
 				break;
-			}case 101:{
-				picture.innerHTML='<img src="./img/avatar/vina_2.png">';
-				title.innerHTML='维娜1';
-				texture.innerHTML='再见了，你们这群高傲的侵略者';
+			}
+			case 101:{
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='未来？如果未来意味着要踩着自己故乡的尸骸...那我拒绝这样的未来。';
 				reveal++;
 				break;
 			}
 			case 102:{
+				picture.innerHTML='<img src="./img/avatar/vina.png">';
+				title.innerHTML='维娜';
+				texture.innerHTML='我们的记忆、我们的家园...不是你们可以随意丢弃的‘枯枝’！';
+				reveal++;
+				break;
+			}
+			case 103:{
+				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
+				title.innerHTML='入侵者';
+				texture.innerHTML='不知好歹...那就让你们和这个可悲的世界一起消失吧...';
+				reveal++;
+				break;
+			}
+			case 104:{
+				picture.innerHTML='';
+				title.innerHTML='';
+				texture.innerHTML='（与委托人一起，封锁未来的时空）';
+				reveal++;
+				break;
+			}
+			case 105:{
 				text.style.display='none';
 				person='none';
-				cg(3);
+				$('.game3').css('display','block');
 				break;
 			}
 			case 1000:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
+				title.innerHTML='委托人';
 				texture.innerHTML='我以为将你找回来会是破局的机会';
 				reveal++;
 				break;
 			}
 			case 1001:{
 				picture.innerHTML='<img src="./img/avatar/vina_2.png">';
-				title.innerHTML='维娜1';
+				title.innerHTML='维娜';
 				texture.innerHTML='杰恩......我们不是朋友吗……';
 				reveal++;
 				break;
@@ -1476,14 +1501,14 @@ function choice(num){
 		switch(num){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='杰恩1';
+				title.innerHTML='委托人';
 				texture.innerHTML='很庆幸过去那么多年你没有改变，我们将会完成一件伟大的事';
 				reveal = 100;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
-				title.innerHTML='杰恩3';
+				title.innerHTML='入侵者';
 				texture.innerHTML='你做出了一个聪明的决定，我们会合作的很愉快的';
 				reveal = 1000;
 				break;

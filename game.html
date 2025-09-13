@@ -191,6 +191,15 @@
 				<!-- <button onclick="$('.game2').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button> -->
 			</div>
 		</div>
+
+		<div class="game3" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
+
+			<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: -1; pointer-events: none;"></div>
+			<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+				<iframe src="./minigame/game3/game.html" style="width:100%; height:90%; border: 0cm;"></iframe>
+				<!-- <button onclick="$('.game2').css('display','none'),obj='none',$('.container').css('margin-top','0'),$('.container').css('margin-left','0')" style="font-size: 2em; padding: 10px 20px;">退出</button> -->
+			</div>
+		</div>
 		
 
 		<div class="loadpage" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000;">
@@ -536,6 +545,13 @@
 				}, 2000);
 				setTimeout(function(){
 					end(8);
+				}, 2000);
+			} else if (event.data === 'win_game3') {
+				setTimeout(function(){
+					$('.game3').css('display', 'none');
+				}, 2000);
+				setTimeout(function(){
+					cg(3);
 				}, 2000);
 			}
 		});

@@ -517,7 +517,7 @@ function loadmap(phase){
 			$('.hero').css('background-position-y','0'); // 将背景图片居中显示
 		}
 		
-		npc=[[440,370,50,'vina_log'],[490,350,50,'vina_log']]; 
+		npc=[[440,370,50,'vina_log']]; 
 		object=[[560,360,50,'record']]; 
 		door=[];
 
@@ -525,6 +525,7 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/vina.png")');
 		$('#npc1').css('left','440px');
 		$('#npc1').css('top','370px'); 
+		$('#npc1').attr('data-orientation', 'down');
 		$('#npc2').css('display','none');
 		$('#npc3').css('display','none');
 		$('#npc4').css('display','none');
@@ -535,8 +536,8 @@ function loadmap(phase){
 
 	else if(phase=='lab2'){
 		var audio = document.getElementById('audio');
-		if (audio && (!audio.src.includes('gate') || audio.paused)){
-			loadSong('gate of steiner.mp3');
+		if (audio && (!audio.src.includes('final') || audio.paused)){
+			loadSong('final.mp3');
 			playSong();
 		}
 		$('.hero').css('display','block');
@@ -545,7 +546,7 @@ function loadmap(phase){
 		scene.style.backgroundRepeat = "no-repeat, repeat"; // 防止图片重复
 		scene.style.backgroundPosition = "center, center"; // 将图片居中显示
 
-		if(reveal == 0) {
+		if(true) {
 			person='reveal'; // 这种没有实体npc的对话要人工设置person，否则没办法进入对话逻辑
 			dialog('reveal');
 		}
@@ -569,15 +570,18 @@ function loadmap(phase){
 		$('#npc1').css('background-image','url("./img/character/vina.png")');
 		$('#npc1').css('left','440px');
 		$('#npc1').css('top','370px'); 
+		$('#npc1').attr('data-orientation', 'down');
 		$('#npc2').css('display','block');
 		$('#npc2').css('background-image','url("./img/character/jane_01.png")');
 		$('#npc2').css('left','370px');
 		$('#npc2').css('top','400px'); 
+		$('#npc2').attr('data-orientation', 'right');
 		$('#npc3').css('display','block');
 		$('#npc3').css('background-image','url("./img/character/jane_3.png")');
 		$('#npc3').css('left','480px');
 		$('#npc3').css('top','490px');
-		$('#npc3').css('background-position-y','-144px')
+		$('#npc3').css('background-position-y','-144px');
+		$('#npc3').attr('data-orientation', 'up');
 		$('#npc4').css('display','none');
 		$('#npc5').css('display','none');
 		$('#npc6').css('display','none');
@@ -585,12 +589,17 @@ function loadmap(phase){
 
 	else if(phase=='lab3'){
 		$('.hero').css('display','block');
+		var audio = document.getElementById('audio');
+		if (audio && (!audio.src.includes('final') || audio.paused)){
+			loadSong('final.mp3');
+			playSong();
+		}
 		scene.style.backgroundImage = "url(./img/map/lab.jpg), url(./img/black_background.jpg)";
 		scene.style.backgroundSize = "auto, cover"; // 根据需要调整大小
 		scene.style.backgroundRepeat = "no-repeat, repeat"; // 防止图片重复
 		scene.style.backgroundPosition = "center, center"; // 将图片居中显示
 
-		if(finalchoice == 0) {
+		if(true) {
 			person='finalchoice'; // 这种没有实体npc的对话要人工设置person，否则没办法进入对话逻辑
 			dialog('finalchoice');
 		}

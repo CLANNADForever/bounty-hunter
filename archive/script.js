@@ -48,6 +48,10 @@ function getscene(archive_num){
         scenename='纳安城';
     else if(now_phase=='lab')
         scenename='实验室';
+    else if(now_phase=='lab2')
+        scenename='实验室';
+    else if(now_phase=='lab3')
+        scenename='实验室';
 
     return scenename;
 }
