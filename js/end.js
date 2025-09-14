@@ -18,7 +18,7 @@ function end(id){
 
 		// --- Show Caption ---
 		setTimeout(function(){
-			$('.caption').html('达成结局：无人问津').fadeIn(1000);
+			$('.caption').html('达成结局：【无人问津】').fadeIn(1000);
 		},3500);
 
 		// --- Fade Out ---
@@ -53,36 +53,36 @@ function end(id){
 		// --- Hide Text 1 ---
 		setTimeout(function(){
 			$('.caption').fadeOut(1000);
-		}, 6000);
+		}, 7000);
 
 		// --- Scene 2: Ending Title ---
 		setTimeout(function(){
 			$('.caption').html('你再次变回了那个漫无目的、不知归处的赏金猎人。').fadeIn(1000);
-		}, 7500);
+		}, 9000);
 
 		// --- Fade Out ---
 		setTimeout(function(){
 			$('.caption').fadeOut(1000);
-		}, 10000);
+		}, 14000);
 
 		setTimeout(function(){
-			$('.caption').html('达成结局: 被驱逐者').fadeIn(1000);
-		}, 11500);
+			$('.caption').html('达成结局：【被驱逐者】').fadeIn(1000);
+		}, 16000);
 
 		setTimeout(function(){
 			$('.caption').fadeOut(1000);
-		}, 14000);
+		}, 20000);
 		
 		// --- Cleanup & Redirect ---
 		setTimeout(function(){
 			$('#cg-container').hide();
 			$('.curtain').hide();
 			window.location.href = './home/home.html';
-		}, 15500);
+		}, 22000);
 		// 为音乐播放器发送消息
 		setTimeout(function(){
 			window.parent.postMessage('showMusicPlayer', '*')
-		}, 15400);
+		}, 21990);
 	}
 	else if(id==3){
 		$('.background_board').css('display','none');
@@ -133,23 +133,23 @@ function end(id){
 			$('.caption').html('韦斯不再谈论他当骑士的过去，你也不再想起自己为何漂泊。你们的脸上，渐渐有了和这里所有人一样的、平和的笑容。');
 			$('.caption').fadeIn(1000);
 		},29000);
-		setTimeout("$('.caption').fadeOut(500),$('.background_board').fadeOut(500)",34000);
+		setTimeout("$('.caption').fadeOut(500),$('.background_board').fadeOut(500)",36000);
 
 		setTimeout(function(){
-			$('.caption').html('达成结局：幻想乌托邦').fadeIn(1000);
-		},36000);
+			$('.caption').html('达成结局：【幻想乌托邦】').fadeIn(1000);
+		},38000);
 		setTimeout(function(){
 			$('.caption').fadeOut(1000);
-		},40000);
+		},43000);
 		
 		setTimeout(function(){
 			window.location.href = './home/home.html';
-		},42000);
+		},45000);
 		setTimeout(function(){
 			window.parent.postMessage('showMusicPlayer', '*')
-		},41900);
+		},44900);
 	}
-	else if(id==4){
+	else if(id==4){ // 实际不存在
 		$('.background_board').css('display','none');
 		$('.caption').css('display','none');
 		$('.curtain').css('display','block');
@@ -161,7 +161,7 @@ function end(id){
 				'background-repeat': 'no-repeat' // 防止背景图片重复
 			});
 			$('.background_board').fadeIn(1000);
-			$('.caption').html('达成结局：迷失旅人');
+			$('.caption').html('达成结局：【迷失旅人】');
 			$('.caption').fadeIn(1000);
 		},2000);
 		setTimeout("$('.caption').fadeOut(500),$('.background_board').fadeOut(1000)",5000);
@@ -179,7 +179,7 @@ function end(id){
 		$('.curtain').css('display','block');
 		$('#cg-container').css('display', 'flex');
 		setTimeout(function(){
-			$('.caption').html('达成结局：沽名钓誉');
+			$('.caption').html('达成结局：【沽名钓誉】');
 			$('.caption').fadeIn(1000);
 		},2000);
 		setTimeout("$('.caption').fadeOut(500)",5000);
@@ -198,7 +198,7 @@ function end(id){
 		$('#cg-container').css('display', 'flex');
 
 		setTimeout(function(){
-			$('.caption').html('达成结局：兜兜转转');
+			$('.caption').html('达成结局：【兜兜转转】');
 			$('.caption').fadeIn(1000);
 		},2000);
 		setTimeout("$('.caption').fadeOut(500),$('.background_board').fadeOut(1000)",5000);
@@ -216,7 +216,7 @@ function end(id){
 		$('.curtain').css('display','block');
 		$('#cg-container').css('display', 'flex');
 		setTimeout(function(){
-			$('.caption').html('达成结局：新的开始');
+			$('.caption').html('达成结局：【新的开始】');
 			$('.caption').fadeIn(1000);
 		},2000);
 		setTimeout("$('.caption').fadeOut(500),$('.background_board').fadeOut(1000)",5000);
@@ -253,7 +253,7 @@ function end(id){
 
 		// --- Scene 2: Ending Title ---
 		setTimeout(function(){
-			$('.caption').html('达成结局：中道崩殂').fadeIn(1000);
+			$('.caption').html('达成结局：【中道崩殂】').fadeIn(1000);
 		}, 7500);
 
 		// --- Fade Out ---

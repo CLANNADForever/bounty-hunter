@@ -265,17 +265,41 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你与来自过去的自己合作，将掠夺者驱逐回他们的时空，并将他们封锁在那个时空，防止他们再去掠夺其他低科技水平时空的资源，这场跨越时空的灾难，落下帷幕'); 
+			$('.caption').html('光芒散尽。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
 			// loadSong('sea you and me.mp3');
 			// playSong();
 		},1000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 8秒后文字用0.5秒淡出
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('尘埃落定后，那些丢失的记忆被归还于每个人，遭受重创的纳安城开始慢慢恢复，经讨论后，时光机项目被暂时终止，在时光机彻底关闭前，来自过去的杰恩回到了过去，现在，轮到你做选择了。'); 
+			$('.caption').html('你与来自过去的自己并肩，将那群傲慢的掠夺者，永远地放逐回了他们那野心勃勃的时空。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-		},10000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",18000)); // 8秒后文字用0.5秒淡出
+		},7000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",12000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('一场席卷时间的风暴，终于归于平息。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},14000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",19000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('尘埃落定。被窃取的记忆，如同晨曦，悄然归还于城市的每一个人。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},21000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",26000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('时光机被封存前，来自过去的“你”也踏上了归途。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},28000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",33000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('现在，轮到你做出选择了。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},35000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",40000)); // 8秒后文字用0.5秒淡出
 		
 		cgTimeouts.push(setTimeout(function(){
             transform('lab3');
@@ -283,7 +307,7 @@ function cg(id){
             $('.curtain').hide();
             $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
-		},19000));
+		},42000));
 	}
 
 	else if(id==4) {//加入掠夺者CG
@@ -298,12 +322,76 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你成为了高科技水平时空的一员，在他们的帮助下，你实现了很多自己曾经设想过但是没有机会实现的研究，名誉双收，而低科技水平时空沦为养料，在资源被榨干后分崩离析，从时间的长河里陨落。'); 
+			$('.caption').html('你成为了他们中的一员。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			// loadSong('sea you and me.mp3');
-			// playSong();
 		},1000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('在那个高度发达的时空，你接触到了前所未有的知识。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},7000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",12000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('那些曾束缚你的物理法则被一一打破，<br>那些只存在于你疯狂想象中的研究，都在你的手中成为了现实。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},14000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",19000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('你获得了名誉、力量，和你所追求的...“进步”。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},21000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",26000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('而你的故乡，成为了你伟大实验的第一个“枯枝”。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},28000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",33000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('它的资源、能量，甚至时间本身，都被源源不断地抽取，化作了你新世界发展的养料。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},35000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",40000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('它分崩离析，悄无声息地消失在了时间的长河里。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},42000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",47000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('就像从未存在过一样。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},49000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",54000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('很多年后，你站在新时空的巅峰，被誉为“最伟大的园丁”。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},56000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",61000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('你修剪了无数个“落后”的世界，为“文明”的火种扫清了道路。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},63000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",68000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('只是偶尔，在绝对的寂静中，你会想起故乡实验室的窗台上，那盆早已化为尘埃的...'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},70000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",75000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('不知名的花。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},77000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",82000)); // 8秒后文字用0.5秒淡出
 		
 		cgTimeouts.push(setTimeout(function(){
 			$('#skipCgButton').hide(); // CG结束后隐藏按钮
@@ -312,7 +400,7 @@ function cg(id){
             clearCgTimeouts(); // 清除所有定时器
 			addachievement(6);
 			end(5)
-		},10000));
+		},84000));
 	}
 
 	
@@ -329,23 +417,55 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你留在了你的故土，时光机被彻底关闭，你和维娜重新做回了实验室的研究员，和昔日同事们开启了新的研究项目。'); 
+			$('.caption').html('你选择了留下。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
 			// loadSong('sea you and me.mp3');
 			// playSong();
 		},1000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",7000)); // 6秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 6秒后文字用0.5秒淡出
+
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('扭转实验室在纳安城人民心里的形象，把被掠夺者破坏的生态恢复……'); 
+			$('.caption').html('漂泊的旅途已经结束，这里是你的故乡，有你的责任，和你珍视的人。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
 		},8000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",12000)); // 4秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",13000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('时光机被彻底封存，关于时间的禁忌，成为了人类共同守护的秘密。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},15000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",20000)); // 4秒后文字用0.5秒淡出
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你们的生活充实又有趣，只是偶尔，你也会想到当赏金猎人时认识的那些朋友……'); 
+			$('.caption').html('数年后。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-		},8000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",12000)); // 4秒后文字用0.5秒淡出
+		},22000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",27000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('纳安城的生态研究中心里，你和维娜正为一个新的环境净化项目而争论不休，一如往昔。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},29000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",34000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('阳光透过窗户，洒在你桌前的一盆植物上。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},36000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",40000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('那是一株重新绽放出花朵的...'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},36000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",41000)); // 4秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('不知名的小花。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},43000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",48000)); // 4秒后文字用0.5秒淡出
+
 		cgTimeouts.push(setTimeout(function(){
 			addachievement(7);
 			end(6);
@@ -353,7 +473,7 @@ function cg(id){
             // $('.curtain').hide();
             // $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
-		},19000));
+		},50000));
 	}
 
 	else if(id==6) {//赏金猎人结局CG
@@ -368,17 +488,52 @@ function cg(id){
 		// 如果想在在显示后4秒消失，应该在setTimeout写上开始时间+4000，而不是4000
 		
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('你握紧了那枚骑士勋章，韦斯的固执与梦想仿佛还留有余温。<br>过去是什么？你曾苦苦追寻。<br>而现在你明白，那些在旅途中遇到的面孔，那些举杯共饮的夜晚，同样是你的一部分。<br>维娜的祝福声中，你再次踏入了时空的洪流。'); 
+			$('.caption').html('你握紧了那枚骑士勋章，韦斯的固执与梦想仿佛还留有余温。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-			// loadSong('sea you and me.mp3');
-			// playSong();
 		},1000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",9000)); // 8秒后文字用0.5秒淡出
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",5000)); // 8秒后文字用0.5秒淡出
+
 		cgTimeouts.push(setTimeout(function(){
-			$('.caption').html('回归故地。纳安城不再是虚假的乌托邦，变回了一个普通的海滨小镇。<br>酒馆里，韦斯正高举酒杯，吹嘘着早已过时的骑士传奇。<br>他看到你，露出了一个得意的笑容。<br>你走上前，将一枚金币放在桌上。<br>“老板，两杯最好的麦酒。”<br>窗外，新的冒险正等待着你。而这一次，你不再孤单。'); 
+			$('.caption').html('过去是什么？你曾苦苦追寻。'); 
 			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
-		},10000));
-		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",18000)); // 8秒后文字用0.5秒淡出
+		},7000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",11000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('而现在你明白，那些在旅途中遇到的面孔，那些举杯共饮的夜晚，同样是你的一部分。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},13000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",17000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('维娜的祝福声中，你再次踏入了时空的洪流。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},19000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",24000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('回归故地。<br>纳安城不再是虚假的乌托邦，变回了一个普通的海滨小镇。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},26000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",31000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('酒馆里，韦斯正高举酒杯，吹嘘着早已过时的骑士传奇。<br>他看到你，露出了一个得意的笑容。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},33000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",38000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('你走上前，将一枚金币放在桌上。<br>“老板，两杯最好的麦酒。”'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},40000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",45000)); // 8秒后文字用0.5秒淡出
+
+		cgTimeouts.push(setTimeout(function(){
+			$('.caption').html('窗外，新的冒险正等待着你。而这一次，你不再孤单。'); 
+			$('.caption').fadeIn(1000); // 文字用1秒时间淡入显示
+		},47000));
+		cgTimeouts.push(setTimeout("$('.caption').fadeOut(500)",52000)); // 8秒后文字用0.5秒淡出
 		
 		cgTimeouts.push(setTimeout(function(){
             addachievement(8);
@@ -387,7 +542,7 @@ function cg(id){
             // $('.curtain').hide();
             // $('#cg-container').hide();
             clearCgTimeouts(); // 清除所有定时器
-		},19000));
+		},54000));
 	}
 
 	else if(id==7){

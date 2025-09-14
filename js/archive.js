@@ -35,6 +35,7 @@ function save(archive_num,time_num){
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'old_knight_gem', old_knight_gem);
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'treasure', treasure);
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'gem', gem);
+    localStorage.setItem('Hound_' + usr + '_' + archive_num + 'init_dialog_at_naan', init_dialog_at_naan);
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'old_knight_na_street', old_knight_na_street);
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'fisherman', fisherman);
     localStorage.setItem('Hound_' + usr + '_' + archive_num + 'villager_04', villager_04);
@@ -99,6 +100,7 @@ function reload(archive_num){
     gem = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'gem'));
     treasure = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'treasure'));
     old_knight_na_street = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'old_knight_na_street'));
+    init_dialog_at_naan = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'init_dialog_at_naan'));
     fisherman = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'fisherman'));
     villager_04 = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'villager_04'));
     villager_05 = Number(localStorage.getItem('Hound_' + usr + '_' + archive_num + 'villager_05'));

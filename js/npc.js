@@ -24,12 +24,12 @@ function dialog(man){
 				break;
 			}
 			case 0:{
-				texture.innerHTML='1783年7月17日.';
+				texture.innerHTML='1783年7月17日。';
 				init_dialog_at_home++;
 				break;
 			}
 			case 1:{
-				texture.innerHTML='上一个任务结束后，杰恩一直在莱茵城的街上游荡，借酒打发时间，今天已经是第三天了.';
+				texture.innerHTML='上一个任务结束后，杰恩一直在莱茵城的街上游荡，借酒打发时间，今天已经是第三天了。';
 				init_dialog_at_home++;
 				break;
 			}
@@ -363,6 +363,10 @@ function dialog(man){
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='......';
+				smallHintController.show("可使用Esc暂停并存档");
+       			setTimeout(() => {
+            		smallHintController.hide();
+        		}, 2000);
 				choice_zone.style.display='block';
 				choice1.innerHTML='我同意你的条件';
 				choice2.innerHTML='我需要自己考虑';
@@ -791,13 +795,6 @@ function dialog(man){
 				break;
 			}
 			case 12:{
-				picture.innerHTML='';
-				title.innerHTML='';
-				texture.innerHTML='（获得道具：骑士勋章）';
-				old_knight_na_street++;
-				break;
-			}
-			case 13:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
 				texture.innerHTML='（收下骑士勋章）我会的，等我完成这份委托我就回来找你';
@@ -1322,7 +1319,7 @@ function dialog(man){
 			case 104:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='（与委托人一起，封锁未来的时空）';
+				texture.innerHTML='（与委托人一起，封锁入侵者！）';
 				reveal++;
 				break;
 			}
@@ -1333,20 +1330,41 @@ function dialog(man){
 				break;
 			}
 			case 1000:{
-				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
-				title.innerHTML='委托人';
-				texture.innerHTML='我以为将你找回来会是破局的机会';
+				picture.innerHTML='<img src="./img/avatar/vina.png">';
+				title.innerHTML='维娜';
+				texture.innerHTML='（她难以置信地后退一步）...牺牲？杰恩...我们...我们就是你口中的‘牺牲’吗？';
 				reveal++;
 				break;
 			}
 			case 1001:{
-				picture.innerHTML='<img src="./img/avatar/vina_2.png">';
-				title.innerHTML='维娜';
-				texture.innerHTML='杰恩......我们不是朋友吗……';
+				picture.innerHTML='<img src="./img/avatar/jane.png">';
+				title.innerHTML='杰恩';
+				texture.innerHTML='......';
 				reveal++;
 				break;
 			}
 			case 1002:{
+				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
+				title.innerHTML='委托人';
+				texture.innerHTML='（他看着你，摇了摇头，脸上是一种混杂着失望和疲惫的表情）原来我把你找回来...是让你做这个选择的...';
+				reveal++;
+				break;
+			}
+			case 1003:{
+				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
+				title.innerHTML='委托人';
+				texture.innerHTML='我错了...全都错了。';
+				reveal++;
+				break;
+			}
+			case 1004:{
+				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
+				title.innerHTML='入侵者';
+				texture.innerHTML='（走到你身边，带着赞许的微笑）这才像个真正的科学家。走吧，博士，别和过去浪费时间了。';
+				reveal++;
+				break;
+			}
+			case 1005:{
 				text.style.display='none';
 				person='none';
 				cg(4);
@@ -1360,17 +1378,17 @@ function dialog(man){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/vina.png">';
 				title.innerHTML='维娜';
-				texture.innerHTML='杰恩，你要留在这里，还是回到那个时空';
+				texture.innerHTML='杰恩...你要留下，还是回到...你已经习惯的那个时空？';
 				finalchoice++;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='';
 				title.innerHTML='';
-				texture.innerHTML='要选择哪边（你的选择会影响到你的未来）';
+				texture.innerHTML='......';
 				choice_zone.style.display='block';
-				choice1.innerHTML='留在自己做研究员的时空';
-				choice2.innerHTML='回到自己做赏金猎人的时空';
+				choice1.innerHTML='我的根在这里。';
+				choice2.innerHTML='我的朋友在那边。';
 				// 这里不应该++，否则不点按钮，e一下就过去了
 				break;
 			}
@@ -1482,14 +1500,14 @@ function choice(num){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='你说的很有道理韦斯，我已经有那么多报酬了，何必纠结这份委托';
+				texture.innerHTML='你说的很有道理，我已经有那么多报酬了，何必纠结这份委托。';
 				old_knight_na_street++;//3
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane.png">';
 				title.innerHTML='杰恩';
-				texture.innerHTML='哦韦斯，谢谢你的好意，不过我已经接了这份委托，还是打算将它做完';
+				texture.innerHTML='谢谢你的好意，不过我已经接了这份委托，还是打算将它做完。';
 				old_knight_na_street = 10;
 				break;
 			}
@@ -1502,14 +1520,14 @@ function choice(num){
 			case 0:{
 				picture.innerHTML='<img src="./img/avatar/jane_01.png">';
 				title.innerHTML='委托人';
-				texture.innerHTML='很庆幸过去那么多年你没有改变，我们将会完成一件伟大的事';
+				texture.innerHTML='很庆幸过去那么多年你没有改变，我们将会完成一件伟大的事。';
 				reveal = 100;
 				break;
 			}
 			case 1:{
 				picture.innerHTML='<img src="./img/avatar/jane_3.png">';
 				title.innerHTML='入侵者';
-				texture.innerHTML='你做出了一个聪明的决定，我们会合作的很愉快的';
+				texture.innerHTML='你做出了一个聪明的决定，我们会合作的很愉快的。';
 				reveal = 1000;
 				break;
 			}

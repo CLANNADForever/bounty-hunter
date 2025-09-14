@@ -2,6 +2,12 @@
 /* 引入一个免费的、具有史诗感的谷歌字体 */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 body {
     /* 使用本地背景图 */
     background: url('../login/background.jpg') no-repeat center center;

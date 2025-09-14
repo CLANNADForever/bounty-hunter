@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>游戏页</title>
+	<title>赏金猎人</title>
 	<link href="css/hero.css" type="text/css" rel="stylesheet">
 	<link rel="stylesheet" href="./css/highlight.css">
 	<link rel="stylesheet" href="./webfonts/iconfont.css">
@@ -15,8 +15,12 @@
 	<script language="javascript" src="js/jquery-1.8.3.min.js"></script>
 	<script src="./archive/script.js"></script>
 	<style>
-		*{
-			margin:0;
+		* {
+			margin: 0;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		::-webkit-scrollbar {
   			display: none;
@@ -379,7 +383,7 @@
 			<div style="margin-top:150px">
 				<p>WASD/方向键:人物移动</p>
 				<p>E:交互/进入下一个场景</p>
-				<p>Space/Enter:进行下一句对话</p>
+				<p>Esc:暂停游戏</p>
 				<p>请缩放浏览器窗口确保画面完整显示 以获得最佳游戏体验</p>
 			</div>
 		</div>
@@ -524,16 +528,19 @@
 				setTimeout(function(){
 					$('.game1').css('display', 'none');
 					pauseSong();
+					window.focus();
 				}, 2000);
 			} else if (event.data === 'lose_game1') {
 				old_knight = 25;
 				setTimeout(function(){
 					$('.game1').css('display', 'none');
 					pauseSong();
+					window.focus();
 				}, 2000);
 			} else if (event.data === 'win_game2') {
 				setTimeout(function(){
 					$('.game2').css('display', 'none');
+					window.focus();
 				}, 2000);
 				setTimeout(function(){
 					transform('gem_room');
@@ -542,6 +549,7 @@
 				setTimeout(function(){
 					$('.game2').css('display', 'none');
 					pauseSong();
+					window.focus();
 				}, 2000);
 				setTimeout(function(){
 					end(8);
@@ -549,6 +557,7 @@
 			} else if (event.data === 'win_game3') {
 				setTimeout(function(){
 					$('.game3').css('display', 'none');
+					window.focus();
 				}, 2000);
 				setTimeout(function(){
 					cg(3);

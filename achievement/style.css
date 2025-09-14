@@ -1,5 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 body {
 	background: url(../login/background.jpg) no-repeat;
 	background-size: cover;
