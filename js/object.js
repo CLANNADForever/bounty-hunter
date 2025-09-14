@@ -199,12 +199,18 @@ function interact(object){
                 record++;
                 break;
             }
-            default:{
-                person='none';
+            case 1:{
+                obj='none';
                 text.style.display='none';
                 npc = [];
-                obj=[]
+                obj = [];
                 cg(8);
+                record++;
+                break;
+            }
+            default:{
+                obj='none';
+                text.style.display='none';
                 break;
             }
         }
