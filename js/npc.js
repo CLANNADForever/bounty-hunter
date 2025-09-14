@@ -475,6 +475,8 @@ function dialog(man){
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='';
+				npc = [];
+				obj = [];
 				end(2);
 				break;
 			}
@@ -492,6 +494,8 @@ function dialog(man){
 				picture.innerHTML='';
 				title.innerHTML='';
 				texture.innerHTML='';
+				npc = [];
+				obj = [];
 				end(1);
 				break;
 			}
@@ -518,6 +522,8 @@ function dialog(man){
 				text.style.display='none'; // 对话结束后关闭对话框
 				choice_zone.style.display='none';
 				person = 'none';
+				npc = [];
+				obj = [];
 				cg(7);
 				break;
 			}
@@ -767,6 +773,8 @@ function dialog(man){
 				texture.innerHTML='在纳安城的生活美好而虚无，这里的人们过着固定规律节奏的生活，时间长了，你与韦斯逐渐被这里同化，渐渐遗忘了你们的过去......';
 				person='none';
 				// pauseSong();
+				npc = [];
+				obj = [];
 				addachievement(4);
 				end(3);
 
@@ -862,6 +870,7 @@ function dialog(man){
 				else{
 					text.style.display='none'; // 对话结束后关闭对话框
 					person = 'none';
+					npc = [];
 					cg(2);
 					break;
 				}
@@ -899,6 +908,7 @@ function dialog(man){
 				else{
 					text.style.display='none'; // 对话结束后关闭对话框
 					person = 'none';
+					npc = [];
 					cg(2);
 				}	
 			}
@@ -1367,6 +1377,8 @@ function dialog(man){
 			case 1005:{
 				text.style.display='none';
 				person='none';
+				npc = [];
+				obj = [];
 				cg(4);
 				break;
 			}
@@ -1536,12 +1548,16 @@ function choice(num){
 	else if(man_now=='finalchoice'){
 		switch(num){
 			case 0:{
+				npc = [];
+				obj = [];
 				cg(5);//研究员结局
 				text.style.display='none'; // 对话结束后关闭对话框
 				person = 'none';
 				break;
 			}
 			case 1:{
+				npc = [];
+				obj = [];
 				cg(6);//赏金猎人结局
 				text.style.display='none'; // 对话结束后关闭对话框
 				person = 'none';

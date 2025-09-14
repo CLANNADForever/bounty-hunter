@@ -163,6 +163,7 @@ function interact(object){
             case 3:{
 				text.style.display='none'; // 对话结束后关闭对话框
 				obj = 'none';
+                obj=[]
                 cg(1);
                 break;
 			}
@@ -201,6 +202,8 @@ function interact(object){
             default:{
                 person='none';
                 text.style.display='none';
+                npc = [];
+                obj=[]
                 cg(8);
                 break;
             }
